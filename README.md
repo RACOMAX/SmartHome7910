@@ -1,2 +1,2 @@
-# smarthome7910
+# SmartHome7910
 DIY Smart Home
