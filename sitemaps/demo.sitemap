@@ -1,7 +1,7 @@
 sitemap demo label="Smart Home"
 {
 	Frame label="Security and Access Control" {
-		Group item=gSecuritySystem label="Security System" icon="cellar" {
+		Group item=gSecuritySystem label="Security System" icon="shield" {
 
 			Frame label="Doors Locks" {
 			    Switch item=WD_MF_FD_Lock icon="lock"
