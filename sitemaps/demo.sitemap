@@ -18,7 +18,11 @@ sitemap demo label="Smart Home"
 				Switch item=Sec_Arm_Perimeter icon="shield"
 				Switch item=Sec_Arm_Garage icon="garage-70"
 			}
-
+            Frame label="Alarm" {
+		        Switch item=Sec_Siren_Status icon="soundvolume"
+				Switch item=Sec_Strobe_Status icon="alarm"
+			    Switch item=Sec_FireAlarm_Status icon="fire"
+			}        
 		}
 	}
 	Frame label="Indoor" {

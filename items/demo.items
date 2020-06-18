@@ -27,6 +27,10 @@ Switch Sec_Arm_Full "Armed House - Full"
 Switch Sec_Arm_Perimeter "Armed House - Perimeter"
 Switch Sec_Arm_Garage "Armed Garage - Door"
 
+Switch Sec_Siren_Status "Siren"
+Switch Sec_Strobe_Status "Strobe"
+Switch Sec_FireAlarm_Status "Fire Alarm"
+
 
 /////////////////////////
 /* Indoor Temperatures */
