@@ -1,0 +1,92 @@
+/* active groups */
+Group:Switch:OR(ON, OFF)        Lights      "All Lights [(%d)]"
+Group:Number:AVG                Temperature "Avg. Room Temperature [%.1f °C]"   <temperature>   (Status)
+Group:Contact:OR(OPEN, CLOSED)  Windows     "Open windows [(%d)]"               <contact>
+
+
+/* Lights */
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+Switch Light_MF_LR_Lamp "Living Room Lamp" {channel="zwave:device:54d243ff:node3:switch_binary"}
+Switch Light_MF_LR_Lights "Living Room Lights" {channel="zwave:device:54d243ff:node3:switch_binary"}
+Switch Light_MF_KT_Lights "Kitchen Lights" {channel="mqtt:topic:f51b6572:mqtt0000000000001"}
+Switch Light_MF_PO_Lights "Porch Lights" {channel="zwave:device:54d243ff:node3:switch_binary"}
+Dimmer Light_SF_MB_Lamp_Y "MB Lamp - L" {channel="zigbee:device:91e3c8e6:b0ce1814035c9945:B0CE1814035C9945_1_dimmer"}
+Dimmer Light_SF_MB_Lamp_R "MB Lamp - R" {channel="zigbee:device:91e3c8e6:dd16abfff2c00625:DD16ABFFF2C00625_1_dimmer"}               
+Switch Light_SF_STA_Lights "Stair Lights" {channel="mqtt:topic:5d3b7e98:mqtt0000000000002"}
+Switch Light_BM_OF_Lights "Basement Office" {channel="zwave:device:54d243ff:node3:switch_binary"}
+Switch Light_BM_BM_Lights "Basement Lights" {channel="zwave:device:54d243ff:node3:switch_binary"}
+
+/////////////////////////
+/* Indoor Temperatures */
+/////////////////////////
+
+// DINING ROOM Motion Sensor
+// GoControl WAPIRZ-1 PIR Motion Detector
+Number MS_MF_Dinning_Temp  " Dining Room Temperature [%.01f °C]" <temperature> (Temperature)  ["Temperature", "Measurement"] {channel="zwave:device:54d243ff:node5:sensor_temperature"}
+Number MS_MF_Dinning_Bat "Dining Room Motion" {channel="zwave:device:54d243ff:node5:battery-level"}
+//
+
+/* Astro Data */
+DateTime H7910_Sunrise_Time           "Sunrise [%1$tH:%1$tM]"         <sunrise>   { channel = "astro:sun:7d61bd11:rise#start" }
+DateTime H7910_Sunset_Time            "Sunset [%1$tH:%1$tM]"          <sunset>    { channel = "astro:sun:7d61bd11:set#start" }
+
+/* Garage */
+Number GR_Door_State "Garage Door State" { channel = "zwave:device:54d243ff:node8:barrier_state" }
+String GR_Doorm_Alarm "Garage Door Alarm" { channel = "zwave:device:54d243ff:node8:alarm_raw" }
+
+///////////////////////
+/* Windows and Doors */
+///////////////////////
+
+// FRONT DOOR DEADLOCK 
+// Kiwikset SmartCode 888 Touchpad Electronic Deadbolt
+Switch WD_MF_FD_Lock "Front Door Lock" {channel="zwave:device:54d243ff:node7:lock_door"}
+Number WD_MF_FD_Lock_Bat "Front Door Lock" {channel="zwave:device:54d243ff:node7:battery-level"}
+//
+// BACK DOOR DEADLOCK
+// Kiwikset SmartCode 888 Touchpad Electronic Deadbolt
+Switch WD_MF_BD_Lock "Back Door Lock" {channel="zwave:device:54d243ff:node6:lock_door"}
+Number WD_MF_BD_Lock_Bat "Back Door Lock" {channel="zwave:device:54d243ff:node6:battery-level"}
+//
+
+// Front Door Sensor
+// GoControl WADWAZ-1 Door/Windows Sensor
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+Contact WDS_MF_FD_Sensor_door "Front Door Sensor" {channel="zwave:device:54d243ff:node12:sensor_door"}
+Switch WDS_MF_FD_Alarm_Sensor "Front Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_entry"}
+Switch WDS_MF_FD_Alarm_Tamper "Front Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_entry"}
+Switch WDS_MF_FD_Ext_Switch "Front Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_entry"}
+Number WDS_MF_FD_Bat "Front Door Sensor" {channel="zwave:device:54d243ff:node12:battery-level"}
+//
+// Back Door Sensor
+// GoControl WADWAZ-1 Door/Windows Sensor
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+Contact WDS_MF_BD_Sensor_door "Back Door Sensor" {channel="zwave:device:54d243ff:node13:sensor_door"}
+Switch WDS_MF_BD_Alarm_Sensor "Back Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_entry"}
+Switch WDS_MF_BD_Alarm_Tamper "Back Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_entry"}
+Switch WDS_MF_BD_Ext_Switch "Back Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_entry"}
+Number WDS_MF_BD_Bat "Back Door Sensor" {channel="zwave:device:54d243ff:node13:battery-level"}
+//
+// Basement Door
+// GoControl WADWAZ-1 Door/Windows Sensor
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+Contact WDS_MF_BS_Sensor_door "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:sensor_door"}
+Switch WDS_MF_BS_Alarm_Sensor "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:alarm_entry"}
+Switch WDS_MF_BS_Alarm_Tamper "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:alarm_entry"}
+Switch WDS_MF_BS_Ext_Switch "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:alarm_entry"}
+Number WDS_MF_BS_Bat "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:battery-level"}
+//
+// Water Leak Sensor - SumPump
+// WAXMAN leakSMART Water Sensor V2
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+Number WL_BS_SP_Bat "SumPump Water Leak Sensor" {channel="zigbee:device:91e3c8e6:0022a3000013a6d9:0022A3000013A6D9_1_batterylevel"}
+Number WL_BS_SP_Temp  "SumPump Temperature [%.01f °C]" <temperature> (Temperature)  ["Temperature", "Measurement"] {channel="zigbee:device:91e3c8e6:0022a3000013a6d9:0022A3000013A6D9_1_temperature"}
+//
+// Alarm and Strobe
+// GoControl WADWAZ-1 Door/Windows Sensor
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+Number ALS_MF_Bat "Siren and Strobe" {channel="zwave:device:54d243ff:node15:battery-level"}
+
+//
+
+// vim: syntax=Xtend
