@@ -15,6 +15,18 @@ Dimmer Light_SF_MB_Lamp_R "MB Lamp - R" {channel="zigbee:device:91e3c8e6:dd16abf
 Switch Light_SF_STA_Lights "Stair Lights" {channel="mqtt:topic:5d3b7e98:mqtt0000000000002"}
 Switch Light_BM_OF_Lights "Basement Office" {channel="zwave:device:54d243ff:node3:switch_binary"}
 Switch Light_BM_BM_Lights "Basement Lights" {channel="zwave:device:54d243ff:node3:switch_binary"}
+Switch Light_BM_OFF_Lights "Office Lights" {channel="mqtt:topic:7007c32c:000000003"}
+Switch Light_MF_LR_Lights "Living Room Lights" {channel="mqtt:topic:03e03961:00004"}
+Switch Light_MF_PO_Lights "Porch Lights" {channel="mqtt:topic:21256c56:00000000005"}
+
+/////////////////////////
+/* Security System */
+/////////////////////////
+
+Switch Sec_Arm_Full "Armed House - Full"
+Switch Sec_Arm_Perimeter "Armed House - Perimeter"
+Switch Sec_Arm_Garage "Armed Garage - Door"
+
 
 /////////////////////////
 /* Indoor Temperatures */

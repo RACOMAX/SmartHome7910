@@ -1,9 +1,31 @@
 sitemap demo label="Smart Home"
 {
+	Frame label="Security and Access Control" {
+		Group item=gSecuritySystem label="Security System" icon="cellar" {
+
+			Frame label="Doors Locks" {
+			    Switch item=WD_MF_FD_Lock icon="lock"
+			    Switch item=WD_MF_BD_Lock icon="lock"			
+			}
+			Frame label="Doors and Windows" {
+				Text item=WDS_MF_FD_Sensor_door icon="door"
+				Text item=WDS_MF_BD_Sensor_door icon="door"
+				Text item=WDS_MF_BS_Sensor_door icon="door"
+				Text item=GR_Door_State icon="garagedoor"
+			}
+	        Frame label="Arm and Dissarm" {
+		        Switch item=Sec_Arm_Full icon="motion"
+				Switch item=Sec_Arm_Perimeter icon="shield"
+				Switch item=Sec_Arm_Garage icon="garage-70"
+			}
+
+		}
+	}
 	Frame label="Indoor" {
 		Group item=gBasement label="Basement" icon="cellar" {
 	        Frame label="Basement" {
-		        Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
+		        Switch item=Light_BM_OFF_Lights icon="light"
+				Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
 			}
 		}
 		Group item=gMainFloor label="Main Floor" icon="groundfloor" {    
@@ -12,17 +34,13 @@ sitemap demo label="Smart Home"
  	            Text item=MS_MF_Dinning_Temp valuecolor=[MS_MF_Dinning_Temp=="NULL"="lightgray",MS_MF_Dinning_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
 			}
 			Frame label="Living Room" {
+				Switch item=Light_MF_LR_Lights icon="light"
 				Switch item=Light_MF_LR_Lamp icon="light"
 			}
-            Frame label="Doors Locks" {
-			Switch item=WD_MF_FD_Lock icon="lock"
-			Switch item=WD_MF_BD_Lock icon="lock"			
+            Frame label="Porch and Christmas Lights" {
+			    Switch item=Light_MF_PO_Lights icon="light"
 			}
-			Frame label="Doors and Windows" {
-				Text item=WDS_MF_FD_Sensor_door icon="door"
-				Text item=WDS_MF_BD_Sensor_door icon="door"
-				Text item=WDS_MF_BS_Sensor_door icon="door"
-			}
+            
 	    }	
 	    Group item=gSecondFloor label="Second Floor" icon="firstfloor" { 
 	        Frame label="Master Bedroom" {
@@ -40,7 +58,6 @@ sitemap demo label="Smart Home"
 	}
 	Frame label="Garage" {
 		Group item=gGarage label="Garage" icon="garage_detached" {
-			Text item=GR_Door_State icon="garagedoor"
 			Text item=GR_Door_Alarm icon="error"
 		}
 	}	
