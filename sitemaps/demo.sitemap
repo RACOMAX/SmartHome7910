@@ -1,0 +1,84 @@
+sitemap demo label="Smart Home"
+{
+	Frame label="Indoor" {
+		Group item=gBasement label="Basement" icon="cellar" {
+	        Frame label="Basement" {
+		        Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
+			}
+		}
+		Group item=gMainFloor label="Main Floor" icon="groundfloor" {    
+			Frame label="Kitchen and Dinning" {
+                Switch item=Light_MF_KT_Lights icon="light"
+ 	            Text item=MS_MF_Dinning_Temp valuecolor=[MS_MF_Dinning_Temp=="NULL"="lightgray",MS_MF_Dinning_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
+			}
+			Frame label="Living Room" {
+				Switch item=Light_MF_LR_Lamp icon="light"
+			}
+            Frame label="Doors Locks" {
+			Switch item=WD_MF_FD_Lock icon="lock"
+			Switch item=WD_MF_BD_Lock icon="lock"			
+			}
+			Frame label="Doors and Windows" {
+				Text item=WDS_MF_FD_Sensor_door icon="door"
+				Text item=WDS_MF_BD_Sensor_door icon="door"
+				Text item=WDS_MF_BS_Sensor_door icon="door"
+			}
+	    }	
+	    Group item=gSecondFloor label="Second Floor" icon="firstfloor" { 
+	        Frame label="Master Bedroom" {
+    	        Slider item=Light_SF_MB_Lamp_Y
+		        Slider item=Light_SF_MB_Lamp_R
+				
+			}
+			Frame label="Common Areas" {
+				Switch item=Light_SF_STA_Lights icon="light"
+			}
+		}	
+
+		
+
+	}
+	Frame label="Garage" {
+		Group item=gGarage label="Garage" icon="garage_detached" {
+			Text item=GR_Door_State icon="garagedoor"
+			Text item=GR_Door_Alarm icon="error"
+		}
+	}	
+	Frame label="Outdoor" {
+		Group item=gGreatOutdoors label="Great Outdoors" icon="terrace" {
+            Frame label="Astronomical Data" {
+                Text item=H7910_Sunrise_Time
+		        Text item=H7910_Sunset_Time
+	        }
+		}
+	}
+	Frame label="Require Attention" {
+		Group item=gRequireAction label="Alarms and Critical States" icon="alarm" {
+            Frame label="Battery Levels" {
+                Text item=WD_MF_FD_Lock_Bat icon="battery" valuecolor=[WD_MF_FD_Lock_Bat=="NULL"="lightgray",WD_MF_FD_Lock_Bat<15="red",<45="orange",>=45="Green"]
+		        Text item=WD_MF_BD_Lock_Bat icon="battery" valuecolor=[WD_MF_BD_Lock_Bat=="NULL"="lightgray",WD_MF_BD_Lock_Bat<15="red",<45="orange",>=45="Green"]
+	            Text item=MS_MF_Dinning_Bat icon="battery" valuecolor=[MS_MF_Dinning_Bat=="NULL"="lightgray",MS_MF_Dinning_Bat<15="red",<45="orange",>=45="Green"]
+			    Text item=WDS_MF_FD_Bat icon="battery" valuecolor=[WDS_MF_FD_Bat=="NULL"="lightgray",WDS_MF_FD_Bat<15="red",<45="orange",>=45="Green"]
+                Text item=WDS_MF_BD_Bat icon="battery" valuecolor=[WDS_MF_BD_Bat=="NULL"="lightgray",WDS_MF_BD_Bat<15="red",<45="orange",>=45="Green"]
+                Text item=WDS_MF_BS_Bat icon="battery" valuecolor=[WDS_MF_BS_Bat=="NULL"="lightgray",WDS_MF_BS_Bat<15="red",<45="orange",>=45="Green"]
+			    Text item=ALS_MF_Bat icon="battery" valuecolor=[ALS_MF_Bat=="NULL"="lightgray",ALS_MF_Bat<15="red",<45="orange",>=45="Green"]
+                Text item=WL_BS_SP_Bat icon="battery" valuecolor=[WL_BS_SP_Bat=="NULL"="lightgray",WL_BS_SP_Bat<15="red",<45="orange",>=45="Green"]
+			
+			
+			}
+		}
+	}	
+	Frame label="Do not touch" {
+		Group item=gWorkinProgress label="Work in Progress" icon="energy" {
+            Frame label="Work in Progress" {
+			    //Switch item=Lights icon="light"
+		        Switch item=Light_BM_OF_Lights icon="light"
+		        Switch item=Light_BM_BM_Lights icon="light"
+		        Switch item=Light_MF_LR_Lights icon="light"	
+				Switch item=Light_MF_PO_Lights icon="light"
+			}			
+		}
+	}
+}
+
+// vim: syntax=Xtend
