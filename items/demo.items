@@ -1,23 +1,20 @@
 /* active groups */
-Group:Switch:OR(ON, OFF)        Lights      "All Lights [(%d)]"
-Group:Number:AVG                Temperature "Avg. Room Temperature [%.1f °C]"   <temperature>   (Status)
-Group:Contact:OR(OPEN, CLOSED)  Windows     "Open windows [(%d)]"               <contact>
+//Group:Switch:OR(ON, OFF)        Lights      "All Lights [(%d)]"
+//Group:Number:AVG                Temperature "Avg. Room Temperature [%.1f °C]"   <temperature>   (Status)
+//Group:Contact:OR(OPEN, CLOSED)  Windows     "Open windows [(%d)]"               <contact>
 
 
 /* Lights */
 /* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
 Switch Light_MF_LR_Lamp "Living Room Lamp" {channel="zwave:device:54d243ff:node3:switch_binary"}
-Switch Light_MF_LR_Lights "Living Room Lights" {channel="zwave:device:54d243ff:node3:switch_binary"}
 Switch Light_MF_KT_Lights "Kitchen Lights" {channel="mqtt:topic:f51b6572:mqtt0000000000001"}
-Switch Light_MF_PO_Lights "Porch Lights" {channel="zwave:device:54d243ff:node3:switch_binary"}
+Switch Light_MF_PO_Lights "Porch Lights" {channel="zwave:device:54d243ff:node22:switch_binary"}
 Dimmer Light_SF_MB_Lamp_Y "MB Lamp - L" {channel="zigbee:device:91e3c8e6:b0ce1814035c9945:B0CE1814035C9945_1_dimmer"}
 Dimmer Light_SF_MB_Lamp_R "MB Lamp - R" {channel="zigbee:device:91e3c8e6:dd16abfff2c00625:DD16ABFFF2C00625_1_dimmer"}               
 Switch Light_SF_STA_Lights "Stair Lights" {channel="mqtt:topic:5d3b7e98:mqtt0000000000002"}
-Switch Light_BM_OF_Lights "Basement Office" {channel="zwave:device:54d243ff:node3:switch_binary"}
 Switch Light_BM_BM_Lights "Basement Lights" {channel="zwave:device:54d243ff:node3:switch_binary"}
 Switch Light_BM_OFF_Lights "Office Lights" {channel="mqtt:topic:7007c32c:000000003"}
 Switch Light_MF_LR_Lights "Living Room Lights" {channel="mqtt:topic:03e03961:00004"}
-Switch Light_MF_PO_Lights "Porch Lights" {channel="mqtt:topic:21256c56:00000000005"}
 
 /////////////////////////
 /* Security System */
@@ -49,6 +46,50 @@ DateTime H7910_Sunset_Time            "Sunset [%1$tH:%1$tM]"          <sunset>  
 /* Garage */
 Number GR_Door_State "Garage Door State" { channel = "zwave:device:54d243ff:node8:barrier_state" }
 String GR_Doorm_Alarm "Garage Door Alarm" { channel = "zwave:device:54d243ff:node8:alarm_raw" }
+
+/////////////////////////
+/* Switches and Lights */
+/////////////////////////
+
+// MASTER BEDROOM BATHROOM 
+// NZW30S In-Wall Switch (On/Off) Scene Enabled
+Switch Light_MB_BA_Switch "Master Bedroom Bath" {channel="zwave:device:54d243ff:node21:switch_binary"}
+Number Light_MB_BA_Scene "Master Bedroom Bath" {channel="zwave:device:54d243ff:node21:scene_number"}
+//
+// SECOND FLOOR BATHROOM 
+// NZW30S In-Wall Switch (On/Off) Scene Enabled
+Switch Light_SF_BA_Switch "Second Floor Bath" {channel="zwave:device:54d243ff:node21:switch_binary"}
+Number Light_SF_BA_Scene "Second Floor Bath" {channel="zwave:device:54d243ff:node21:scene_number"}
+//
+// LIVING ROOM LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_LR_Switch "Living Room" {channel="mqtt:topic:03e03961:00004"}
+//
+// MAIN FLOOR ENTRANCE LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_ENT_Switch "Main Floor Entrance" {channel="mqtt:topic:6669241e:000000006"}
+//
+// DINING ROOM LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_DIN_Switch "Dining Room" {channel="mqtt:topic:6a908799:00000000008"}
+//
+// MAIN FLOOR STAIRS LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_STA_Switch "Main Floor Stairs" {channel="mqtt:topic:341ab6f8:000000000009"}
+//
+// MAIN FLOOR REAR ENTRANCE LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_RENT_Switch "Rear Entrance" {channel="mqtt:topic:6a908799:00000000008"}
+//
+// DECK LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_DECK_Switch "Deck Lights" {channel="mqtt:topic:341ab6f8:000000000009"}
+//
+// MASTER BEDROOM LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_SF_MB_Switch "Master Bedroom" {channel="mqtt:topic:341ab6f8:000000000009"}
+//
+
 
 ///////////////////////
 /* Windows and Doors */

@@ -29,20 +29,26 @@ sitemap demo label="Smart Home"
 		Group item=gBasement label="Basement" icon="cellar" {
 	        Frame label="Basement" {
 		        Switch item=Light_BM_OFF_Lights icon="light"
+				Switch item=Light_BM_BM_Lights icon="light"
 				Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
 			}
 		}
 		Group item=gMainFloor label="Main Floor" icon="groundfloor" {    
 			Frame label="Kitchen and Dinning" {
                 Switch item=Light_MF_KT_Lights icon="light"
+				Switch item=Light_MF_DIN_Switch icon="light"
  	            Text item=MS_MF_Dinning_Temp valuecolor=[MS_MF_Dinning_Temp=="NULL"="lightgray",MS_MF_Dinning_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
 			}
 			Frame label="Living Room" {
 				Switch item=Light_MF_LR_Lights icon="light"
 				Switch item=Light_MF_LR_Lamp icon="light"
 			}
-            Frame label="Porch and Christmas Lights" {
+            Frame label="Other Lights" {
 			    Switch item=Light_MF_PO_Lights icon="light"
+				Switch item=Light_MF_ENT_Switch icon="light"
+				Switch item=Light_MF_STA_Switch icon="light"
+				Switch item=Light_MF_RENT_Switch icon="light"
+				Switch item=Light_MF_DECK_Switch icon="light"
 			}
             
 	    }	
@@ -50,10 +56,12 @@ sitemap demo label="Smart Home"
 	        Frame label="Master Bedroom" {
     	        Slider item=Light_SF_MB_Lamp_Y
 		        Slider item=Light_SF_MB_Lamp_R
-				
+				Switch item=Light_SF_MB_Switch icon="light"
+				Switch item=Light_MB_BA_Switch icon="light"
 			}
 			Frame label="Common Areas" {
 				Switch item=Light_SF_STA_Lights icon="light"
+				Switch item=Lights_SF_BA_Switch icon="light"
 			}
 		}	
 

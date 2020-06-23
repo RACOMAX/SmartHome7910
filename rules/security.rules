@@ -1,0 +1,6 @@
+rule "Door Open or Closed Telegram"
+when
+    Item WDS_MF_BS_Sensor_door changed
+then
+    sendTelegram("bot1", "Door: %s", WDS_MF_BS_Sensor_door.state.toString)
+end

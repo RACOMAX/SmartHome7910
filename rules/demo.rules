@@ -4,29 +4,5 @@ when
 then
     sendCommand(Light_MF_KT_Lights, ON)
     sendCommand(Light_MF_LR_Lamp, ON)
-    sendTelegram("bot1", "Kitchen and LR Lamp are now ON {Sunset Trigered}")
+    sendTelegram("bot1", "Kitchen and LR Lamp: ON {Sunset Trigered}")
 end
-
-rule "Door Open Telegram"
-when
-    Item WDS_MF_BS_Sensor_door changed
-then
-    sendTelegram("bot1", "Door: %s", WDS_MF_BS_Sensor_door.state.toString)
-end
-
-rule "Garage Door Open Telegram"
-when
-    Item GR_Door_State changed
-then
-    if( GR_Door_State == 0 ) {
-        sendTelegram("bot1", "Garage Door is: CLOSED") 
-    }
-    else{
-        sendTelegram("bot1", "Garage Door is: OPEN")
-    }
-    
-end
-
-
-
-// vim: syntax=Xtend

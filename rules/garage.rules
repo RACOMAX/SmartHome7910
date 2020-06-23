@@ -1,0 +1,16 @@
+///////////////////////////////////////////////////////////////////////
+// SEND TELGRAM NOTIFICATION WHEN THE GARAGE DOOR GETS OPENED OR CLOSED
+///////////////////////////////////////////////////////////////////////
+
+rule "Garage Door Open Telegram"
+when
+    Item GR_Door_State changed
+then
+    if( GR_Door_State < 253 ) {
+        sendTelegram("bot1", "Garage Door is: CLOSED") 
+    }
+    else{
+        sendTelegram("bot1", "Garage Door is: OPENED")
+    }
+end
+
