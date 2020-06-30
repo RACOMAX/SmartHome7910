@@ -48,7 +48,7 @@ sitemap demo label="Smart Home"
 				Switch item=Light_MF_ENT_Switch icon="light"
 				Switch item=Light_MF_STA_Switch icon="light"
 				Switch item=Light_MF_RENT_Switch icon="light"
-				Switch item=Light_MF_DECK_Switch icon="light"
+				
 			}
             
 	    }	
@@ -57,11 +57,12 @@ sitemap demo label="Smart Home"
     	        Slider item=Light_SF_MB_Lamp_Y
 		        Slider item=Light_SF_MB_Lamp_R
 				Switch item=Light_SF_MB_Switch icon="light"
+				Switch item=Light_MB_CLO_Switch icon="light"
 				Switch item=Light_MB_BA_Switch icon="light"
 			}
 			Frame label="Common Areas" {
 				Switch item=Light_SF_STA_Lights icon="light"
-				Switch item=Lights_SF_BA_Switch icon="light"
+				Switch item=Light_SF_BA_Switch icon="light"
 			}
 		}	
 
@@ -75,8 +76,12 @@ sitemap demo label="Smart Home"
 	}	
 	Frame label="Outdoor" {
 		Group item=gGreatOutdoors label="Great Outdoors" icon="terrace" {
+            Frame label="Outdoor Lights" {
+				Switch item=Light_MF_DECK_Switch icon="light"
+				Switch item=Light_OUT_CHR_Switch icon="light"
+            }
             Frame label="Astronomical Data" {
-                Text item=H7910_Sunrise_Time
+				Text item=H7910_Sunrise_Time
 		        Text item=H7910_Sunset_Time
 	        }
 		}
@@ -97,7 +102,7 @@ sitemap demo label="Smart Home"
 			}
 		}
 	}	
-	Frame label="Do not touch" {
+/*	Frame label="Do not touch" {
 		Group item=gWorkinProgress label="Work in Progress" icon="energy" {
             Frame label="Work in Progress" {
 			    //Switch item=Lights icon="light"
@@ -107,7 +112,7 @@ sitemap demo label="Smart Home"
 				Switch item=Light_MF_PO_Lights icon="light"
 			}			
 		}
-	}
+	} */
 }
 
 // vim: syntax=Xtend

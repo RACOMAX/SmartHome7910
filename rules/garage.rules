@@ -6,11 +6,11 @@ rule "Garage Door Open Telegram"
 when
     Item GR_Door_State changed
 then
-    if( GR_Door_State < 253 ) {
-        sendTelegram("bot1", "Garage Door is: CLOSED") 
+    if( GR_Door_State > 0 ) {
+        sendTelegram("bot1", "Garage Door is: OPEN") 
     }
     else{
-        sendTelegram("bot1", "Garage Door is: OPENED")
+        sendTelegram("bot1", "Garage Door is: CLOSED")
     }
 end
 

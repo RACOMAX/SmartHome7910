@@ -11,7 +11,7 @@ Switch Light_MF_KT_Lights "Kitchen Lights" {channel="mqtt:topic:f51b6572:mqtt000
 Switch Light_MF_PO_Lights "Porch Lights" {channel="zwave:device:54d243ff:node22:switch_binary"}
 Dimmer Light_SF_MB_Lamp_Y "MB Lamp - L" {channel="zigbee:device:91e3c8e6:b0ce1814035c9945:B0CE1814035C9945_1_dimmer"}
 Dimmer Light_SF_MB_Lamp_R "MB Lamp - R" {channel="zigbee:device:91e3c8e6:dd16abfff2c00625:DD16ABFFF2C00625_1_dimmer"}               
-Switch Light_SF_STA_Lights "Stair Lights" {channel="mqtt:topic:5d3b7e98:mqtt0000000000002"}
+Switch Light_SF_STA_Lights "Stairs Lights" {channel="mqtt:topic:5d3b7e98:mqtt0000000000002"}
 Switch Light_BM_BM_Lights "Basement Lights" {channel="zwave:device:54d243ff:node3:switch_binary"}
 Switch Light_BM_OFF_Lights "Office Lights" {channel="mqtt:topic:7007c32c:000000003"}
 Switch Light_MF_LR_Lights "Living Room Lights" {channel="mqtt:topic:03e03961:00004"}
@@ -61,6 +61,11 @@ Number Light_MB_BA_Scene "Master Bedroom Bath" {channel="zwave:device:54d243ff:n
 Switch Light_SF_BA_Switch "Second Floor Bath" {channel="zwave:device:54d243ff:node21:switch_binary"}
 Number Light_SF_BA_Scene "Second Floor Bath" {channel="zwave:device:54d243ff:node21:scene_number"}
 //
+// MASTER BEDROOM BATHROOM 
+// NZW30S In-Wall Switch (On/Off) Scene Enabled
+Switch Light_MB_BA_Switch "Master Bedroom Bath" {channel="zwave:device:54d243ff:node23:switch_binary"}
+Number Light_MB_BA_Scene "Master Bedroom Bath" {channel="zwave:device:54d243ff:node23:scene_number"}
+//
 // LIVING ROOM LIGHTS 
 // SONOFF MINI - Tasmota Lite
 Switch Light_MF_LR_Switch "Living Room" {channel="mqtt:topic:03e03961:00004"}
@@ -79,15 +84,23 @@ Switch Light_MF_STA_Switch "Main Floor Stairs" {channel="mqtt:topic:341ab6f8:000
 //
 // MAIN FLOOR REAR ENTRANCE LIGHTS 
 // SONOFF MINI - Tasmota Lite
-Switch Light_MF_RENT_Switch "Rear Entrance" {channel="mqtt:topic:6a908799:00000000008"}
+Switch Light_MF_RENT_Switch "Rear Entrance" {channel="mqtt:topic:68341caa:switch"}
 //
 // DECK LIGHTS 
 // SONOFF MINI - Tasmota Lite
-Switch Light_MF_DECK_Switch "Deck Lights" {channel="mqtt:topic:341ab6f8:000000000009"}
+Switch Light_MF_DECK_Switch "Deck Lights" {channel="mqtt:topic:1ed409e2:switch"}
 //
 // MASTER BEDROOM LIGHTS 
 // SONOFF MINI - Tasmota Lite
-Switch Light_SF_MB_Switch "Master Bedroom" {channel="mqtt:topic:341ab6f8:000000000009"}
+Switch Light_SF_MB_Switch "Master Bedroom Lights" {channel="mqtt:topic:1aed68fe:switch"}
+//
+// MASTER BEDROOM CLOSET LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MB_CLO_Switch "Master Bedroom Closet" {channel="mqtt:topic:845fcc47:switch"}
+//
+// OUTSIDE CHRISTMAS LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_OUT_CHR_Switch "Christmas Lights" {channel="mqtt:topic:42700781:switch"}
 //
 
 
