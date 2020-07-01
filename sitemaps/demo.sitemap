@@ -1,7 +1,7 @@
 sitemap demo label="Smart Home"
 {
 	Frame label="Security and Access Control" {
-		Group item=gSecuritySystem label="Security System" icon="shield" {
+		Text label="Security System" icon="shield" {
 
 			Frame label="Doors Locks" {
 			    Switch item=WD_MF_FD_Lock icon="lock"
@@ -26,14 +26,14 @@ sitemap demo label="Smart Home"
 		}
 	}
 	Frame label="Indoor" {
-		Group item=gBasement label="Basement" icon="cellar" {
+		Text label="Basement" icon="cellar" {
 	        Frame label="Basement" {
 		        Switch item=Light_BM_OFF_Lights icon="light"
 				Switch item=Light_BM_BM_Lights icon="light"
 				Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
 			}
 		}
-		Group item=gMainFloor label="Main Floor" icon="groundfloor" {    
+		Text label="Main Floor" icon="groundfloor" {    
 			Frame label="Kitchen and Dinning" {
                 Switch item=Light_MF_KT_Lights icon="light"
 				Switch item=Light_MF_DIN_Switch icon="light"
@@ -52,7 +52,7 @@ sitemap demo label="Smart Home"
 			}
             
 	    }	
-	    Group item=gSecondFloor label="Second Floor" icon="firstfloor" { 
+	    Text label="Second Floor" icon="firstfloor" { 
 	        Frame label="Master Bedroom" {
     	        Slider item=Light_SF_MB_Lamp_Y
 		        Slider item=Light_SF_MB_Lamp_R
@@ -70,12 +70,12 @@ sitemap demo label="Smart Home"
 
 	}
 	Frame label="Garage" {
-		Group item=gGarage label="Garage" icon="garage_detached" {
+		Text label="Garage" icon="garage_detached" {
 			Text item=GR_Door_Alarm icon="error"
 		}
 	}	
 	Frame label="Outdoor" {
-		Group item=gGreatOutdoors label="Great Outdoors" icon="terrace" {
+		Text label="Great Outdoors" icon="terrace" {
             Frame label="Outdoor Lights" {
 				Switch item=Light_MF_DECK_Switch icon="light"
 				Switch item=Light_OUT_CHR_Switch icon="light"
@@ -86,24 +86,106 @@ sitemap demo label="Smart Home"
 	        }
 		}
 	}
-	Frame label="Require Attention" {
-		Group item=gRequireAction label="Alarms and Critical States" icon="alarm" {
-            Frame label="Battery Levels" {
-                Text item=WD_MF_FD_Lock_Bat icon="battery" valuecolor=[WD_MF_FD_Lock_Bat=="NULL"="lightgray",WD_MF_FD_Lock_Bat<15="red",<45="orange",>=45="Green"]
-		        Text item=WD_MF_BD_Lock_Bat icon="battery" valuecolor=[WD_MF_BD_Lock_Bat=="NULL"="lightgray",WD_MF_BD_Lock_Bat<15="red",<45="orange",>=45="Green"]
-	            Text item=MS_MF_Dinning_Bat icon="battery" valuecolor=[MS_MF_Dinning_Bat=="NULL"="lightgray",MS_MF_Dinning_Bat<15="red",<45="orange",>=45="Green"]
-			    Text item=WDS_MF_FD_Bat icon="battery" valuecolor=[WDS_MF_FD_Bat=="NULL"="lightgray",WDS_MF_FD_Bat<15="red",<45="orange",>=45="Green"]
-                Text item=WDS_MF_BD_Bat icon="battery" valuecolor=[WDS_MF_BD_Bat=="NULL"="lightgray",WDS_MF_BD_Bat<15="red",<45="orange",>=45="Green"]
-                Text item=WDS_MF_BS_Bat icon="battery" valuecolor=[WDS_MF_BS_Bat=="NULL"="lightgray",WDS_MF_BS_Bat<15="red",<45="orange",>=45="Green"]
-			    Text item=ALS_MF_Bat icon="battery" valuecolor=[ALS_MF_Bat=="NULL"="lightgray",ALS_MF_Bat<15="red",<45="orange",>=45="Green"]
-                Text item=WL_BS_SP_Bat icon="battery" valuecolor=[WL_BS_SP_Bat=="NULL"="lightgray",WL_BS_SP_Bat<15="red",<45="orange",>=45="Green"]
-			
-			
+	Frame label="System" {
+		Text item=H7910_System_Time icon="calendar"
+		Text label="System Health" icon="status" {
+            Frame label="Battery StatusswaaZZAaaaasszsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssj54j54"{
+				Text label="Battery Level" icon="battery" {
+                    Text item=WD_MF_FD_Lock_Bat icon="battery" valuecolor=[WD_MF_FD_Lock_Bat=="NULL"="lightgray",WD_MF_FD_Lock_Bat<15="red",<45="orange",>=45="Green"]
+		            Text item=WD_MF_BD_Lock_Bat icon="battery" valuecolor=[WD_MF_BD_Lock_Bat=="NULL"="lightgray",WD_MF_BD_Lock_Bat<15="red",<45="orange",>=45="Green"]
+	                Text item=MS_MF_Dinning_Bat icon="battery" valuecolor=[MS_MF_Dinning_Bat=="NULL"="lightgray",MS_MF_Dinning_Bat<15="red",<45="orange",>=45="Green"]
+			        Text item=WDS_MF_FD_Bat icon="battery" valuecolor=[WDS_MF_FD_Bat=="NULL"="lightgray",WDS_MF_FD_Bat<15="red",<45="orange",>=45="Green"]
+                    Text item=WDS_MF_BD_Bat icon="battery" valuecolor=[WDS_MF_BD_Bat=="NULL"="lightgray",WDS_MF_BD_Bat<15="red",<45="orange",>=45="Green"]
+                    Text item=WDS_MF_BS_Bat icon="battery" valuecolor=[WDS_MF_BS_Bat=="NULL"="lightgray",WDS_MF_BS_Bat<15="red",<45="orange",>=45="Green"]
+			        Text item=ALS_MF_Bat icon="battery" valuecolor=[ALS_MF_Bat=="NULL"="lightgray",ALS_MF_Bat<15="red",<45="orange",>=45="Green"]
+                    Text item=WL_BS_SP_Bat icon="battery" valuecolor=[WL_BS_SP_Bat=="NULL"="lightgray",WL_BS_SP_Bat<15="red",<45="orange",>=45="Green"]
+			    }
+			}
+            Frame label="Devices Status" {
+				Text label="MQTT Devices" icon="receiver"{
+					Text item=Light_SF_MB_availability label="Master Bedroom Lights" icon="receiver"{
+			        	Text item=Light_SF_MB_hostname icon="receiver"
+                    	Text item=Light_SF_MB_availability icon="switch"
+			        	Text item=Light_SF_MB_module icon="text"
+                    	Text item=Light_SF_MB_version icon="text"
+			        	Text item=Light_SF_MB_ipaddress icon="text"
+                    	Text item=Light_SF_MB_wifirssi icon="qualityofservice"
+					}
+					Text item=Light_SF_MB_availability label="Master Bedroom Closet" icon="receiver"{
+			        	Text item=Light_SF_MB_hostname icon="receiver"
+                    	Text item=Light_SF_MB_availability icon="switch"
+			        	Text item=Light_SF_MB_module icon="text"
+                    	Text item=Light_SF_MB_version icon="text"
+			        	Text item=Light_SF_MB_ipaddress icon="text"
+                    	Text item=Light_SF_MB_wifirssi icon="qualityofservice"
+					}
+					Text item=Light_SF_MB_availability label="SF Stairs Lights" icon="receiver"{
+			        	Text item=Light_SF_MB_hostname icon="receiver"
+                    	Text item=Light_SF_MB_availability icon="switch"
+			        	Text item=Light_SF_MB_module icon="text"
+                    	Text item=Light_SF_MB_version icon="text"
+			        	Text item=Light_SF_MB_ipaddress icon="text"
+                    	Text item=Light_SF_MB_wifirssi icon="qualityofservice"
+					}
+				}
+				Text label="Z-Wave Devices" icon="receiver"{
+					Text item=Light_SF_MB_availability label="Master Bedroom Lights" icon="receiver"{
+			        	Text item=Light_SF_MB_hostname icon="receiver"
+                    	Text item=Light_SF_MB_availability icon="switch"
+			        	Text item=Light_SF_MB_module icon="text"
+                    	Text item=Light_SF_MB_version icon="text"
+			        	Text item=Light_SF_MB_ipaddress icon="text"
+                    	Text item=Light_SF_MB_wifirssi icon="qualityofservice"
+					}
+					Text item=Light_SF_MB_availability label="Master Bedroom Closet" icon="receiver"{
+			        	Text item=Light_SF_MB_hostname icon="receiver"
+                    	Text item=Light_SF_MB_availability icon="switch"
+			        	Text item=Light_SF_MB_module icon="text"
+                    	Text item=Light_SF_MB_version icon="text"
+			        	Text item=Light_SF_MB_ipaddress icon="text"
+                    	Text item=Light_SF_MB_wifirssi icon="qualityofservice"
+					}
+					Text item=Light_SF_MB_availability label="SF Stairs Lights" icon="receiver"{
+			        	Text item=Light_SF_MB_hostname icon="receiver"
+                    	Text item=Light_SF_MB_availability icon="switch"
+			        	Text item=Light_SF_MB_module icon="text"
+                    	Text item=Light_SF_MB_version icon="text"
+			        	Text item=Light_SF_MB_ipaddress icon="text"
+                    	Text item=Light_SF_MB_wifirssi icon="qualityofservice"
+					}
+				}
+				Text label="Zigbee Devices" icon="receiver"{
+					Text item=Light_SF_MB_availability label="Master Bedroom Lights" icon="receiver"{
+			        	Text item=Light_SF_MB_hostname icon="receiver"
+                    	Text item=Light_SF_MB_availability icon="switch"
+			        	Text item=Light_SF_MB_module icon="text"
+                    	Text item=Light_SF_MB_version icon="text"
+			        	Text item=Light_SF_MB_ipaddress icon="text"
+                    	Text item=Light_SF_MB_wifirssi icon="qualityofservice"
+					}
+					Text item=Light_SF_MB_availability label="Master Bedroom Closet" icon="receiver"{
+			        	Text item=Light_SF_MB_hostname icon="receiver"
+                    	Text item=Light_SF_MB_availability icon="switch"
+			        	Text item=Light_SF_MB_module icon="text"
+                    	Text item=Light_SF_MB_version icon="text"
+			        	Text item=Light_SF_MB_ipaddress icon="text"
+                    	Text item=Light_SF_MB_wifirssi icon="qualityofservice"
+					}
+					Text item=Light_SF_MB_availability label="SF Stairs Lights" icon="receiver"{
+			        	Text item=Light_SF_MB_hostname icon="receiver"
+                    	Text item=Light_SF_MB_availability icon="switch"
+			        	Text item=Light_SF_MB_module icon="text"
+                    	Text item=Light_SF_MB_version icon="text"
+			        	Text item=Light_SF_MB_ipaddress icon="text"
+                    	Text item=Light_SF_MB_wifirssi icon="qualityofservice"
+					}
+				}			
 			}
 		}
+		Text label="Settings" icon="settings" 
 	}	
 /*	Frame label="Do not touch" {
-		Group item=gWorkinProgress label="Work in Progress" icon="energy" {
+		Text label="Work in Progress" icon="energy" {
             Frame label="Work in Progress" {
 			    //Switch item=Lights icon="light"
 		        Switch item=Light_BM_OF_Lights icon="light"
