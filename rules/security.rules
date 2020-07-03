@@ -1,10 +1,11 @@
+/*
 rule "Door Open or Closed Telegram"
 when
     Item WDS_MF_BS_Sensor_door changed
 then
     sendTelegram("bot1", "Basement door is: %s", WDS_MF_BS_Sensor_door.state.toString)
 end
-
+*/
 /*rule "Test Telegram"
 when
     Item Light_SF_BA_Switch changed

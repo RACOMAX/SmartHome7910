@@ -8,10 +8,10 @@ sitemap demo label="Smart Home"
 			    Switch item=WD_MF_BD_Lock icon="lock"			
 			}
 			Frame label="Doors and Windows" {
-				Text item=WDS_MF_FD_Sensor_door icon="door"
+				Text item=WDS_MF_FD_Sensor_door icon="frontdoor"
 				Text item=WDS_MF_BD_Sensor_door icon="door"
 				Text item=WDS_MF_BS_Sensor_door icon="door"
-				Text item=GR_Door_State icon="garagedoor"
+				Text item=Garage_Door_Position icon="garagedoor"
 			}
 	        Frame label="Arm and Dissarm" {
 		        Switch item=Sec_Arm_Full icon="motion"
@@ -71,7 +71,9 @@ sitemap demo label="Smart Home"
 	}
 	Frame label="Garage" {
 		Text label="Garage" icon="garage_detached" {
-			Text item=GR_Door_Alarm icon="error"
+			Switch item=Garage_Door
+			Text item=Garage_Door_Position icon="garagedoor"
+			//Text item=GR_Doorm_Alarm icon="error"
 		}
 	}	
 	Frame label="Outdoor" {
@@ -88,9 +90,10 @@ sitemap demo label="Smart Home"
 	}
 	Frame label="System" {
 		Text item=H7910_System_Time icon="calendar"
+		Text item=SystemInfo_Uptime icon="time"
 		Text label="System Health" icon="status" {
-            Frame label="Battery StatusswaaZZAaaaasszsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssj54j54"{
-				Text label="Battery Level" icon="battery" {
+            Frame label="Battery Status"{
+				Text label="Battery Levels" icon="battery" {
                     Text item=WD_MF_FD_Lock_Bat icon="battery" valuecolor=[WD_MF_FD_Lock_Bat=="NULL"="lightgray",WD_MF_FD_Lock_Bat<15="red",<45="orange",>=45="Green"]
 		            Text item=WD_MF_BD_Lock_Bat icon="battery" valuecolor=[WD_MF_BD_Lock_Bat=="NULL"="lightgray",WD_MF_BD_Lock_Bat<15="red",<45="orange",>=45="Green"]
 	                Text item=MS_MF_Dinning_Bat icon="battery" valuecolor=[MS_MF_Dinning_Bat=="NULL"="lightgray",MS_MF_Dinning_Bat<15="red",<45="orange",>=45="Green"]
@@ -181,8 +184,19 @@ sitemap demo label="Smart Home"
 					}
 				}			
 			}
+			Frame label="Local Computer Status" {
+
+				Text item=SystemInfo_Uptime icon="time"
+				Text item=SystemInfo_Load icon="line"
+				Text item=SystemInfo_Memmory_UsedPerc icon="line"
+				Text item=SystemInfo_Storage_UsedPerc icon="line"
+				Text item=SystemInfo_Sensor_CpuTemp icon="temperature"
+				Text item=SystemInfo_Ip
+				Text item=SystemInfo_Mac 
+				
+			}
 		}
-		Text label="Settings" icon="settings" 
+		Text label="System Settings" icon="settings" 
 	}	
 /*	Frame label="Do not touch" {
 		Text label="Work in Progress" icon="energy" {

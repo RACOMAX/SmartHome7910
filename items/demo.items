@@ -2,7 +2,7 @@
 //Group:Switch:OR(ON, OFF)        Lights      "All Lights [(%d)]"
 //Group:Number:AVG                Temperature "Avg. Room Temperature [%.1f °C]"   <temperature>   (Status)
 //Group:Contact:OR(OPEN, CLOSED)  Windows     "Open windows [(%d)]"               <contact>
-
+//Group    gGarageDoorOpener    "Garge Door Openers"    <garagedoor>
 
 /* Lights */
 /* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
@@ -40,15 +40,33 @@ Number MS_MF_Dinning_Bat "Dining Room Motion" {channel="zwave:device:54d243ff:no
 //
 
 /* Date Time */
-DateTime H7910_System_Time "Time: [%1$tA, %1$tB  %1$td, %1$tY %1$tI:%1$tM %1$Tp]" { channel = "ntp:ntp:demo:dateTime" }
+DateTime H7910_System_Time "System Time [%1$tB  %1$td, %1$tY %1$tI:%1$tM %1$Tp]" { channel = "ntp:ntp:demo:dateTime" }
 
 /* Astro Data */
 DateTime H7910_Sunrise_Time           "Sunrise [%1$tH:%1$tM]"         <sunrise>   { channel = "astro:sun:7d61bd11:rise#start" }
 DateTime H7910_Sunset_Time            "Sunset [%1$tH:%1$tM]"          <sunset>    { channel = "astro:sun:7d61bd11:set#start" }
 
+/* Local Computer */
+//systeminfo:computer:openhab:cpu#uptime
+//systeminfo:computer:openhab:memory#usedPercent
+//systeminfo:computer:openhab:storage#usedPercent
+//systeminfo:computer:openhab:sensors#cpuTemp
+//systeminfo:computer:openhab:network#ip
+//systeminfo:computer:openhab:network#mac
+//systeminfo:computer:openhab:process#load
+Number SystemInfo_Uptime "System Uptime" { channel = "systeminfo:computer:openhab:cpu#uptime" }
+Number SystemInfo_Load "System Load" { channel = "systeminfo:computer:openhab:process#load" }
+Number SystemInfo_Memmory_UsedPerc "Memmory Used" { channel = "systeminfo:computer:openhab:memory#usedPercent" }
+Number SystemInfo_Storage_UsedPerc "Storage Used" { channel = "systeminfo:computer:openhab:storage#usedPercent" }
+Number SystemInfo_Sensor_CpuTemp "CPU Temperture [%.1f °C]" { channel = "systeminfo:computer:openhab:sensors#cpuTemp" }
+String SystemInfo_Ip "IP Address" { channel = "systeminfo:computer:openhab:network#ip" }
+String SystemInfo_Mac "MAC Address" { channel = "systeminfo:computer:openhab:network#mac" }
+
+
 /* Garage */
-Number GR_Door_State "Garage Door State" { channel = "zwave:device:54d243ff:node8:barrier_state" }
-String GR_Doorm_Alarm "Garage Door Alarm" { channel = "zwave:device:54d243ff:node8:alarm_raw" }
+Switch Garage_Door "Garage Door [MAP(garagedoor.map):%s]"
+Number Garage_Door_Position "Garage Door [MAP(garagedoor.map):%s]" { channel = "zwave:device:54d243ff:node8:barrier_state" }
+String Garage_Door_Alarm "Garage Door" { channel = "zwave:device:54d243ff:node8:alarm_raw" }
 
 /////////////////////////
 /* Switches and Lights */
@@ -174,7 +192,7 @@ Number WD_MF_BD_Lock_Bat "Back Door Lock" {channel="zwave:device:54d243ff:node6:
 // Front Door Sensor
 // GoControl WADWAZ-1 Door/Windows Sensor
 /* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
-Contact WDS_MF_FD_Sensor_door "Front Door Sensor" {channel="zwave:device:54d243ff:node12:sensor_door"}
+Contact WDS_MF_FD_Sensor_door "Front Door Sensor [%s]" {channel="zwave:device:54d243ff:node12:sensor_door"}
 Switch WDS_MF_BS_Alarm_Sensor "Basement Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_entry"}
 Switch WDS_MF_BS_Alarm_Tamper "Basement Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_tamper"}
 Switch WDS_MF_BS_Ext_Switch "Basement Door Sensor" {channel="zwave:device:54d243ff:node12:sensor_binary"}
@@ -183,7 +201,7 @@ Number WDS_MF_FD_Bat "Front Door Sensor" {channel="zwave:device:54d243ff:node12:
 // Back Door Sensor
 // GoControl WADWAZ-1 Door/Windows Sensor
 /* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
-Contact WDS_MF_BD_Sensor_door "Back Door Sensor" {channel="zwave:device:54d243ff:node13:sensor_door"}
+Contact WDS_MF_BD_Sensor_door "Back Door Sensor [%s]" {channel="zwave:device:54d243ff:node13:sensor_door"}
 Switch WDS_MF_BS_Alarm_Sensor "Basement Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_entry"}
 Switch WDS_MF_BS_Alarm_Tamper "Basement Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_tamper"}
 Switch WDS_MF_BS_Ext_Switch "Basement Door Sensor" {channel="zwave:device:54d243ff:node13:sensor_binary"}
@@ -192,7 +210,7 @@ Number WDS_MF_BD_Bat "Back Door Sensor" {channel="zwave:device:54d243ff:node13:b
 // Basement Door
 // GoControl WADWAZ-1 Door/Windows Sensor
 /* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
-Contact WDS_MF_BS_Sensor_door "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:sensor_door"}
+Contact WDS_MF_BS_Sensor_door "Basement Door Sensor [%s]" {channel="zwave:device:54d243ff:node10:sensor_door"}
 Switch WDS_MF_BS_Alarm_Sensor "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:alarm_entry"}
 Switch WDS_MF_BS_Alarm_Tamper "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:alarm_tamper"}
 Switch WDS_MF_BS_Ext_Switch "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:sensor_binary"}
