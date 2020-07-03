@@ -1,20 +1,33 @@
 /* active groups */
-Group:Switch:OR(ON, OFF)        Lights      "All Lights [(%d)]"
-Group:Number:AVG                Temperature "Avg. Room Temperature [%.1f °C]"   <temperature>   (Status)
-Group:Contact:OR(OPEN, CLOSED)  Windows     "Open windows [(%d)]"               <contact>
-
+//Group:Switch:OR(ON, OFF)        Lights      "All Lights [(%d)]"
+//Group:Number:AVG                Temperature "Avg. Room Temperature [%.1f °C]"   <temperature>   (Status)
+//Group:Contact:OR(OPEN, CLOSED)  Windows     "Open windows [(%d)]"               <contact>
+//Group    gGarageDoorOpener    "Garge Door Openers"    <garagedoor>
 
 /* Lights */
 /* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
 Switch Light_MF_LR_Lamp "Living Room Lamp" {channel="zwave:device:54d243ff:node3:switch_binary"}
-Switch Light_MF_LR_Lights "Living Room Lights" {channel="zwave:device:54d243ff:node3:switch_binary"}
 Switch Light_MF_KT_Lights "Kitchen Lights" {channel="mqtt:topic:f51b6572:mqtt0000000000001"}
-Switch Light_MF_PO_Lights "Porch Lights" {channel="zwave:device:54d243ff:node3:switch_binary"}
+Switch Light_MF_PO_Lights "Porch Lights" {channel="zwave:device:54d243ff:node22:switch_binary"}
 Dimmer Light_SF_MB_Lamp_Y "MB Lamp - L" {channel="zigbee:device:91e3c8e6:b0ce1814035c9945:B0CE1814035C9945_1_dimmer"}
 Dimmer Light_SF_MB_Lamp_R "MB Lamp - R" {channel="zigbee:device:91e3c8e6:dd16abfff2c00625:DD16ABFFF2C00625_1_dimmer"}               
-Switch Light_SF_STA_Lights "Stair Lights" {channel="mqtt:topic:5d3b7e98:mqtt0000000000002"}
-Switch Light_BM_OF_Lights "Basement Office" {channel="zwave:device:54d243ff:node3:switch_binary"}
+Switch Light_SF_STA_Lights "Stairs Lights" {channel="mqtt:topic:5d3b7e98:mqtt0000000000002"}
 Switch Light_BM_BM_Lights "Basement Lights" {channel="zwave:device:54d243ff:node3:switch_binary"}
+Switch Light_BM_OFF_Lights "Office Lights" {channel="mqtt:topic:7007c32c:000000003"}
+Switch Light_MF_LR_Lights "Living Room Lights" {channel="mqtt:topic:03e03961:00004"}
+
+/////////////////////////
+/* Security System */
+/////////////////////////
+
+Switch Sec_Arm_Full "Armed House - Full"
+Switch Sec_Arm_Perimeter "Armed House - Perimeter"
+Switch Sec_Arm_Garage "Armed Garage - Door"
+
+Switch Sec_Siren_Status "Siren"
+Switch Sec_Strobe_Status "Strobe"
+Switch Sec_FireAlarm_Status "Fire Alarm"
+
 
 /////////////////////////
 /* Indoor Temperatures */
@@ -26,13 +39,140 @@ Number MS_MF_Dinning_Temp  " Dining Room Temperature [%.01f °C]" <temperature> 
 Number MS_MF_Dinning_Bat "Dining Room Motion" {channel="zwave:device:54d243ff:node5:battery-level"}
 //
 
+/* Date Time */
+DateTime H7910_System_Time "System Time [%1$tB  %1$td, %1$tY %1$tI:%1$tM %1$Tp]" { channel = "ntp:ntp:demo:dateTime" }
+
 /* Astro Data */
 DateTime H7910_Sunrise_Time           "Sunrise [%1$tH:%1$tM]"         <sunrise>   { channel = "astro:sun:7d61bd11:rise#start" }
 DateTime H7910_Sunset_Time            "Sunset [%1$tH:%1$tM]"          <sunset>    { channel = "astro:sun:7d61bd11:set#start" }
 
+/* Local Computer */
+//systeminfo:computer:openhab:cpu#uptime
+//systeminfo:computer:openhab:memory#usedPercent
+//systeminfo:computer:openhab:storage#usedPercent
+//systeminfo:computer:openhab:sensors#cpuTemp
+//systeminfo:computer:openhab:network#ip
+//systeminfo:computer:openhab:network#mac
+//systeminfo:computer:openhab:process#load
+Number SystemInfo_Uptime "System Uptime" { channel = "systeminfo:computer:openhab:cpu#uptime" }
+Number SystemInfo_Load "System Load" { channel = "systeminfo:computer:openhab:process#load" }
+Number SystemInfo_Memmory_UsedPerc "Memmory Used" { channel = "systeminfo:computer:openhab:memory#usedPercent" }
+Number SystemInfo_Storage_UsedPerc "Storage Used" { channel = "systeminfo:computer:openhab:storage#usedPercent" }
+Number SystemInfo_Sensor_CpuTemp "CPU Temperture [%.1f °C]" { channel = "systeminfo:computer:openhab:sensors#cpuTemp" }
+String SystemInfo_Ip "IP Address" { channel = "systeminfo:computer:openhab:network#ip" }
+String SystemInfo_Mac "MAC Address" { channel = "systeminfo:computer:openhab:network#mac" }
+
+
 /* Garage */
-Number GR_Door_State "Garage Door State" { channel = "zwave:device:54d243ff:node8:barrier_state" }
-String GR_Doorm_Alarm "Garage Door Alarm" { channel = "zwave:device:54d243ff:node8:alarm_raw" }
+Switch Garage_Door "Garage Door [MAP(garagedoor.map):%s]"
+Number Garage_Door_Position "Garage Door [MAP(garagedoor.map):%s]" { channel = "zwave:device:54d243ff:node8:barrier_state" }
+String Garage_Door_Alarm "Garage Door" { channel = "zwave:device:54d243ff:node8:alarm_raw" }
+
+/////////////////////////
+/* Switches and Lights */
+/////////////////////////
+
+// SECOND FLOOR BATHROOM 
+// NZW30S In-Wall Switch (On/Off) Scene Enabled
+Switch Light_SF_BA_Switch "Second Floor Bath" {channel="zwave:device:54d243ff:node21:switch_binary", expire="20m,command=OFF"}
+Number Light_SF_BA_Scene "Second Floor Bath" {channel="zwave:device:54d243ff:node21:scene_number"}
+//
+// MASTER BEDROOM BATHROOM 
+// NZW30S In-Wall Switch (On/Off) Scene Enabled
+Switch Light_MB_BA_Switch "Master Bedroom Bath" {channel="zwave:device:54d243ff:node23:switch_binary", expire="20m,command=OFF"}
+Number Light_MB_BA_Scene "Master Bedroom Bath" {channel="zwave:device:54d243ff:node23:scene_number"}
+//
+// LIVING ROOM LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_LR_Switch "Living Room" {channel="mqtt:topic:03e03961:00004"}
+String Light_MF_LR_hostname "Hostname" {channel="mqtt:topic:03e03961:hostname"}
+String Light_MF_LR_availability "Availability" {channel="mqtt:topic:03e03961:availability"}
+String Light_MF_LR_module "Module" {channel="mqtt:topic:03e03961:module"}
+String Light_MF_LR_version "FW Version" {channel="mqtt:topic:03e03961:version"}
+String Light_MF_LR_ipaddress "IP Address" {channel="mqtt:topic:03e03961:ipaddress"}
+String Light_MF_LR_wifirssi "WIFI RSSI" {channel="mqtt:topic:03e03961:wifi-rssi"}
+//
+// MAIN FLOOR ENTRANCE LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_ENT_Switch "Main Floor Entrance" {channel="mqtt:topic:6669241e:000000006"}
+String Light_MF_ENT_hostname "Hostname" {channel="mqtt:topic:6669241e:hostname"}
+String Light_MF_ENT_availability "Availability" {channel="mqtt:topic:6669241e:availability"}
+String Light_MF_ENT_module "Module" {channel="mqtt:topic:6669241e:module"}
+String Light_MF_ENT_version "FW Version" {channel="mqtt:topic:6669241e:version"}
+String Light_MF_ENT_ipaddress "IP Address" {channel="mqtt:topic:6669241e:ipaddress"}
+String Light_MF_ENT_wifirssi "WIFI RSSI" {channel="mqtt:topic:6669241e:wifi-rssi"}
+//
+// DINING ROOM LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_DIN_Switch "Dining Room" {channel="mqtt:topic:6a908799:00000000008"}
+String Light_MF_DIN_hostname "Hostname" {channel="mqtt:topic:6a908799:hostname"}
+String Light_MF_DIN_availability "Availability" {channel="mqtt:topic:6a908799:availability"}
+String Light_MF_DIN_module "Module" {channel="mqtt:topic:6a908799:module"}
+String Light_MF_DIN_version "FW Version" {channel="mqtt:topic:6a908799:version"}
+String Light_MF_DIN_ipaddress "IP Address" {channel="mqtt:topic:6a908799:ipaddress"}
+String Light_MF_DIN_wifirssi "WIFI RSSI" {channel="mqtt:topic:6a908799:wifi-rssi"}
+//
+// MAIN FLOOR STAIRS LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_STA_Switch "Main Floor Stairs" {channel="mqtt:topic:341ab6f8:000000000009"}
+String Light_MF_STA_hostname "Hostname" {channel="mqtt:topic:341ab6f8:hostname"}
+String Light_MF_STA_availability "Availability" {channel="mqtt:topic:341ab6f8:availability"}
+String Light_MF_STA_module "Module" {channel="mqtt:topic:341ab6f8:module"}
+String Light_MF_STA_version "FW Version" {channel="mqtt:topic:341ab6f8:version"}
+String Light_MF_STA_ipaddress "IP Address" {channel="mqtt:topic:341ab6f8:ipaddress"}
+String Light_MF_STA_wifirssi "WIFI RSSI" {channel="mqtt:topic:341ab6f8:wifi-rssi"}
+//
+// MAIN FLOOR REAR ENTRANCE LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_RENT_Switch "Rear Entrance" {channel="mqtt:topic:68341caa:switch"}
+String Light_MF_RENT_hostname "Hostname" {channel="mqtt:topic:68341caa:hostname"}
+String Light_MF_RENT_availability "Availability" {channel="mqtt:topic:68341caa:availability"}
+String Light_MF_RENT_module "Module" {channel="mqtt:topic:68341caa:module"}
+String Light_MF_RENT_version "FW Version" {channel="mqtt:topic:68341caa:version"}
+String Light_MF_RENT_ipaddress "IP Address" {channel="mqtt:topic:68341caa:ipaddress"}
+String Light_MF_RENT_wifirssi "WIFI RSSI" {channel="mqtt:topic:68341caa:wifi-rssi"}
+//
+// DECK LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_DECK_Switch "Deck Lights" {channel="mqtt:topic:1ed409e2:switch"}
+String Light_MF_DECK_hostname "Hostname" {channel="mqtt:topic:1ed409e2:hostname"}
+String Light_MF_DECK_availability "Availability" {channel="mqtt:topic:1ed409e2:availability"}
+String Light_MF_DECK_module "Module" {channel="mqtt:topic:1ed409e2:module"}
+String Light_MF_DECK_version "FW Version" {channel="mqtt:topic:1ed409e2:version"}
+String Light_MF_DECK_ipaddress "IP Address" {channel="mqtt:topic:1ed409e2:ipaddress"}
+String Light_MF_DECK_wifirssi "WIFI RSSI" {channel="mqtt:topic:1ed409e2:wifi-rssi"}
+//
+// MASTER BEDROOM LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_SF_MB_Switch "Master Bedroom Lights" {channel="mqtt:topic:1aed68fe:switch"}
+String Light_SF_MB_hostname "Hostname" {channel="mqtt:topic:1aed68fe:hostname"}
+String Light_SF_MB_availability "Availability" {channel="mqtt:topic:1aed68fe:availability"}
+String Light_SF_MB_module "Module" {channel="mqtt:topic:1aed68fe:module"}
+String Light_SF_MB_version "FW Version" {channel="mqtt:topic:1aed68fe:version"}
+String Light_SF_MB_ipaddress "IP Address" {channel="mqtt:topic:1aed68fe:ipaddress"}
+String Light_SF_MB_wifirssi "WIFI RSSI" {channel="mqtt:topic:1aed68fe:wifi-rssi"}
+//
+// MASTER BEDROOM CLOSET LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MB_CLO_Switch "Master Bedroom Closet" {channel="mqtt:topic:845fcc47:switch", expire="20m,command=OFF"}
+String Light_MB_CLO_hostname "Hostname" {channel="mqtt:topic:845fcc47:hostname"}
+String Light_MB_CLO_availability "Availability" {channel="mqtt:topic:845fcc47:availability"}
+String Light_MB_CLO_module "Module" {channel="mqtt:topic:845fcc47:module"}
+String Light_MB_CLO_version "FW Version" {channel="mqtt:topic:845fcc47:version"}
+String Light_MB_CLO_ipaddress "IP Address" {channel="mqtt:topic:845fcc47:ipaddress"}
+String Light_MB_CLO_wifirssi "WIFI RSSI" {channel="mqtt:topic:845fcc47:wifi-rssi"}
+//
+// OUTSIDE CHRISTMAS LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_OUT_CHR_Switch "Christmas Lights" {channel="mqtt:topic:42700781:switch"}
+String Light_OUT_CHR_hostname "Hostname" {channel="mqtt:topic:42700781:hostname"}
+String Light_OUT_CHR_availability "Availability" {channel="mqtt:topic:42700781:availability"}
+String Light_OUT_CHR_module "Module" {channel="mqtt:topic:42700781:module"}
+String Light_OUT_CHR_version "FW Version" {channel="mqtt:topic:42700781:version"}
+String Light_OUT_CHR_ipaddress "IP Address" {channel="mqtt:topic:42700781:ipaddress"}
+String Light_OUT_CHR_wifirssi "WIFI RSSI" {channel="mqtt:topic:42700781:wifi-rssi"}
+//
+
 
 ///////////////////////
 /* Windows and Doors */
@@ -52,28 +192,28 @@ Number WD_MF_BD_Lock_Bat "Back Door Lock" {channel="zwave:device:54d243ff:node6:
 // Front Door Sensor
 // GoControl WADWAZ-1 Door/Windows Sensor
 /* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
-Contact WDS_MF_FD_Sensor_door "Front Door Sensor" {channel="zwave:device:54d243ff:node12:sensor_door"}
-Switch WDS_MF_FD_Alarm_Sensor "Front Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_entry"}
-Switch WDS_MF_FD_Alarm_Tamper "Front Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_entry"}
-Switch WDS_MF_FD_Ext_Switch "Front Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_entry"}
+Contact WDS_MF_FD_Sensor_door "Front Door Sensor [%s]" {channel="zwave:device:54d243ff:node12:sensor_door"}
+Switch WDS_MF_BS_Alarm_Sensor "Basement Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_entry"}
+Switch WDS_MF_BS_Alarm_Tamper "Basement Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_tamper"}
+Switch WDS_MF_BS_Ext_Switch "Basement Door Sensor" {channel="zwave:device:54d243ff:node12:sensor_binary"}
 Number WDS_MF_FD_Bat "Front Door Sensor" {channel="zwave:device:54d243ff:node12:battery-level"}
 //
 // Back Door Sensor
 // GoControl WADWAZ-1 Door/Windows Sensor
 /* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
-Contact WDS_MF_BD_Sensor_door "Back Door Sensor" {channel="zwave:device:54d243ff:node13:sensor_door"}
-Switch WDS_MF_BD_Alarm_Sensor "Back Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_entry"}
-Switch WDS_MF_BD_Alarm_Tamper "Back Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_entry"}
-Switch WDS_MF_BD_Ext_Switch "Back Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_entry"}
+Contact WDS_MF_BD_Sensor_door "Back Door Sensor [%s]" {channel="zwave:device:54d243ff:node13:sensor_door"}
+Switch WDS_MF_BS_Alarm_Sensor "Basement Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_entry"}
+Switch WDS_MF_BS_Alarm_Tamper "Basement Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_tamper"}
+Switch WDS_MF_BS_Ext_Switch "Basement Door Sensor" {channel="zwave:device:54d243ff:node13:sensor_binary"}
 Number WDS_MF_BD_Bat "Back Door Sensor" {channel="zwave:device:54d243ff:node13:battery-level"}
 //
 // Basement Door
 // GoControl WADWAZ-1 Door/Windows Sensor
 /* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
-Contact WDS_MF_BS_Sensor_door "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:sensor_door"}
+Contact WDS_MF_BS_Sensor_door "Basement Door Sensor [%s]" {channel="zwave:device:54d243ff:node10:sensor_door"}
 Switch WDS_MF_BS_Alarm_Sensor "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:alarm_entry"}
-Switch WDS_MF_BS_Alarm_Tamper "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:alarm_entry"}
-Switch WDS_MF_BS_Ext_Switch "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:alarm_entry"}
+Switch WDS_MF_BS_Alarm_Tamper "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:alarm_tamper"}
+Switch WDS_MF_BS_Ext_Switch "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:sensor_binary"}
 Number WDS_MF_BS_Bat "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:battery-level"}
 //
 // Water Leak Sensor - SumPump
