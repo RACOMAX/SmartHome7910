@@ -62,8 +62,9 @@ Number SystemInfo_Sensor_CpuTemp "CPU Temperture [%.1f °C]" { channel = "system
 String SystemInfo_Ip "IP Address" { channel = "systeminfo:computer:openhab:network#ip" }
 String SystemInfo_Mac "MAC Address" { channel = "systeminfo:computer:openhab:network#mac" }
 
-
+////////////
 /* Garage */
+////////////
 Switch Garage_Door "Garage Door [MAP(garagedoor.map):%s]"
 Number Garage_Door_Position "Garage Door [MAP(garagedoor.map):%s]" { channel = "zwave:device:54d243ff:node8:barrier_state" }
 String Garage_Door_Alarm "Garage Door" { channel = "zwave:device:54d243ff:node8:alarm_raw" }
