@@ -11,7 +11,7 @@ sitemap demo label="Smart Home"
 				Text item=WDS_MF_FD_Sensor_door icon="frontdoor"
 				Text item=WDS_MF_BD_Sensor_door icon="door"
 				Text item=WDS_MF_BS_Sensor_door icon="door"
-				Text item=Garage_Door_Position icon="garagedoor"
+				Text item=Garage_Door_Contact icon="garagedoor"
 			}
 	        Frame label="Arm and Dissarm" {
 		        Switch item=Sec_Arm_Full icon="motion"
@@ -19,8 +19,8 @@ sitemap demo label="Smart Home"
 				Switch item=Sec_Arm_Garage icon="garage-70"
 			}
             Frame label="Alarm" {
-		        Switch item=Sec_Siren_Status icon="soundvolume"
-				Switch item=Sec_Strobe_Status icon="alarm"
+		        Switch item=ALS_MF_Switch icon="soundvolume"
+				//Switch item=Sec_Strobe_Status icon="alarm"
 			    Switch item=Sec_FireAlarm_Status icon="fire"
 			}        
 		}
@@ -72,7 +72,7 @@ sitemap demo label="Smart Home"
 	Frame label="Garage" {
 		Text label="Garage" icon="garage_detached" {
 			Switch item=Garage_Door
-			Text item=Garage_Door_Position icon="garagedoor"
+			Text item=Garage_Door_Contact icon="garagedoor"
 			//Text item=GR_Doorm_Alarm icon="error"
 		}
 	}	

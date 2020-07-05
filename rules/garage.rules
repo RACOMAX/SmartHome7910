@@ -47,13 +47,13 @@ then
 		Garage_Door_Position.sendCommand("0")
         //logDebug("Rules", "Lock: Update garage door barrier_state after switch state change events (GarageAttached_Door_Position) [{}]",Garage_Door_Position.state)
         //sendTelegram("bot2", "Lock: Update garage door barrier_state after switch state change events (GarageAttached_Door_Position) [{}]",Garage_Door_Position.state)
-        sendTelegram("bot2", "Garage door is: CLOSING") 
+        //sendTelegram("bot2", "Garage door received CLOSE command") 
     }
     else if (Garage_Door.state == OFF) {
 		Garage_Door_Position.sendCommand("255")
         //logDebug("Rules", "Lock: Update garage door barrier_state after switch state change events (GarageAttached_Door_Position) [{}]",GarageAttached_Door_Position.state)
         //sendTelegram("bot2", "Lock: Update garage door barrier_state after switch state change events (GarageAttached_Door_Position) [{}]",GarageAttached_Door_Position.state)
-	    sendTelegram("bot2", "Garage door is: OPENING")
+	    //sendTelegram("bot2", "Garage door received OPEN command")
     }
 end
 
@@ -62,16 +62,22 @@ when
 	Item Garage_Door_Position received update
 then
     if (Garage_Door_Position.state == 255 && Garage_Door.state == ON) {
-		Garage_Door.postUpdate(OFF)
+		sendTelegram("bot2", "Garage door is: OPENING") 
+        Garage_Door.postUpdate(OFF)
+        Garage_Door_Contact.postUpdate(OPEN)
         //logDebug("Rules", "Lock: Update garage door states after barrier_state events (GarageAttached_Door) [{}]",Garage_Door.state)
         //sendTelegram("bot2", "Lock: Update garage door barrier_state after switch state change events (GarageAttached_Door_Position) [{}]",Garage_Door_Position.state)
-        sendTelegram("bot2", "Garage door is: OPENING") 
+        
+        
     }
     else if (Garage_Door_Position.state == 0 && Garage_Door.state == OFF) {
-		Garage_Door.postUpdate(ON)
+		sendTelegram("bot2", "Garage door is: CLOSING")
+        Garage_Door.postUpdate(ON)
+        Garage_Door_Contact.postUpdate(CLOSED)
         //logDebug("Rules", "Lock: Update garage door states after barrier_state events (GarageAttached_Door) [{}]",Garage_Door.state)
 	    //sendTelegram("bot2", "Lock: Update garage door barrier_state after switch state change events (GarageAttached_Door_Position) [{}]",Garage_Door_Position.state)
-        sendTelegram("bot2", "Garage door is: CLOSING")
+        
+        
     }
 end
 
