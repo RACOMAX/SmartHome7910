@@ -4,5 +4,5 @@ when
 then
     sendCommand(Light_MF_KT_Lights, ON)
     sendCommand(Light_MF_LR_Lamp, ON)
-    sendTelegram("H7910_Bot", "Kitchen and LR Lamp: ON {Sunset Trigered}")
+    sendTelegram("bot1", "Kitchen and LR Lamp: ON {Sunset Trigered}")
 end

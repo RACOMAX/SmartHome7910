@@ -1,11 +1,13 @@
-/*
-rule "Door Open or Closed Telegram"
+
+rule "Test SAY Functionality"
 when
-    Item WDS_MF_BS_Sensor_door changed
+    Item Sec_Arm_Full changed
 then
-    sendTelegram("bot1", "Basement door is: %s", WDS_MF_BS_Sensor_door.state.toString)
+    //say("The garage door is Opening")
+    sendTelegram("bot1", "Security Testing") 
+
 end
-*/
+
 /*rule "Test Telegram"
 when
     Item Light_SF_BA_Switch changed

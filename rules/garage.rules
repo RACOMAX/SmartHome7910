@@ -62,7 +62,8 @@ when
 	Item Garage_Door_Position received update
 then
     if (Garage_Door_Position.state == 255 && Garage_Door.state == ON) {
-		sendTelegram("H7910_Ch", "Garage door is: OPENING") 
+		sendTelegram("bot2", "Garage door is: OPENING") 
+        //say("The garage door is Opening")
         Garage_Door.postUpdate(OFF)
         Garage_Door_Contact.postUpdate(OPEN)
         //logDebug("Rules", "Lock: Update garage door states after barrier_state events (GarageAttached_Door) [{}]",Garage_Door.state)
@@ -71,7 +72,8 @@ then
         
     }
     else if (Garage_Door_Position.state == 0 && Garage_Door.state == OFF) {
-		sendTelegram("H7910_Ch", "Garage door is: CLOSING")
+		sendTelegram("bot2", "Garage door is: CLOSING")
+        //say("The garage door is Closing")
         Garage_Door.postUpdate(ON)
         Garage_Door_Contact.postUpdate(CLOSED)
         //logDebug("Rules", "Lock: Update garage door states after barrier_state events (GarageAttached_Door) [{}]",Garage_Door.state)
