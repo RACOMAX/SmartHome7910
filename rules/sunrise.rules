@@ -1,0 +1,8 @@
+rule "Sunrise Actions"
+when
+    Channel "astro:sun:7d61bd11:rise#event" triggered START
+then
+    //sendCommand(Light_MF_KT_Lights, ON)
+    //sendCommand(Light_MF_LR_Lamp, ON)
+    //sendTelegram("bot1", "Kitchen and LR Lamp: ON {Sunset Trigered}")
+end

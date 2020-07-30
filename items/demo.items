@@ -62,13 +62,28 @@ Number SystemInfo_Sensor_CpuTemp "CPU Temperture [%.1f °C]" { channel = "system
 String SystemInfo_Ip "IP Address" { channel = "systeminfo:computer:openhab:network#ip" }
 String SystemInfo_Mac "MAC Address" { channel = "systeminfo:computer:openhab:network#mac" }
 
-////////////
-/* Garage */
-////////////
+/////////////////////
+/////* Garage *//////
+////////////////////
 Switch Garage_Door "Garage Door [MAP(garagedoor.map):%s]"
 Number Garage_Door_Position "Garage Door [MAP(garagedoor.map):%s]" { channel = "zwave:device:54d243ff:node8:barrier_state" }
 String Garage_Door_Alarm "Garage Door" { channel = "zwave:device:54d243ff:node8:alarm_raw" }
 Contact Garage_Door_Contact "Garage Door [%s]"
+
+// GARAGE LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Garage_Inside_Switch "Inside Lights" {channel="mqtt:topic:15e3ffe1:power1"}
+Switch Garage_Attic_Switch "Attic Lights" {channel="mqtt:topic:15e3ffe1:power2"}
+Switch Garage_Alley_Switch "Back Alley Lights" {channel="mqtt:topic:15e3ffe1:power3"}
+Switch Garage_Patio_Switch "Back Yards Lights" {channel="mqtt:topic:15e3ffe1:power4"}
+String Garage_4CH_Temp_In "Indoor [%.1f °C]" {channel="mqtt:topic:15e3ffe1:temperature"}
+String Garage_4CH_Temp_Out "Outdoor [%.1f °C]" {channel="mqtt:topic:15e3ffe1:temperature"}
+String Garage_4CH_hostname "Hostname" {channel="mqtt:topic:15e3ffe1:hostname"}
+String Garage_4CH_availability "Availability" {channel="mqtt:topic:15e3ffe1:availability"}
+String Garage_4CH_module "Module" {channel="mqtt:topic:15e3ffe1:module"}
+String Garage_4CH_version "FW Version" {channel="mqtt:topic:15e3ffe1:version"}
+String Garage_4CH_ipaddress "IP Address" {channel="mqtt:topic:15e3ffe1:ipaddress"}
+String Garage_4CH_wifirssi "WIFI RSSI" {channel="mqtt:topic:15e3ffe1:wifi-rssi"}
 
 /////////////////////////
 /* Switches and Lights */

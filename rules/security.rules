@@ -3,7 +3,7 @@ rule "Test SAY Functionality"
 when
     Item Sec_Arm_Full changed
 then
-    //say("The garage door is Opening")
+    say("The garage door is Opening")
     sendTelegram("bot1", "Security Testing") 
 
 end

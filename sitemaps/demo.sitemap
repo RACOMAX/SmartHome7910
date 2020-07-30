@@ -71,9 +71,19 @@ sitemap demo label="Smart Home"
 	}
 	Frame label="Garage" {
 		Text label="Garage" icon="garage_detached" {
-			Switch item=Garage_Door
-			Text item=Garage_Door_Contact icon="garagedoor"
-			//Text item=GR_Doorm_Alarm icon="error"
+			Frame label="Lights" {
+            Switch item=Garage_Inside_Switch icon="light"
+			Switch item=Garage_Attic_Switch icon="light"
+			Switch item=Garage_Alley_Switch icon="light"
+			Switch item=Garage_Patio_Switch icon="light"
+			}
+			Frame label="Doors" {	
+			    Switch item=Garage_Door
+			    Text item=Garage_Door_Contact icon="garagedoor"
+			}
+			Frame label="Sensors" {
+            Text item=Garage_4CH_Temp_In valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"] icon="temperature"
+			}
 		}
 	}	
 	Frame label="Outdoor" {
@@ -129,6 +139,14 @@ sitemap demo label="Smart Home"
                     	Text item=Light_SF_MB_version icon="text"
 			        	Text item=Light_SF_MB_ipaddress icon="text"
                     	Text item=Light_SF_MB_wifirssi icon="qualityofservice"
+					}
+					Text item=Garage_4CH_availability label="Garage 4CH" icon="receiver"{
+			        	Text item=Garage_4CH_hostname icon="receiver"
+                    	Text item=Garage_4CH_availability icon="switch"
+			        	Text item=Garage_4CH_module icon="text"
+                    	Text item=Garage_4CH_version icon="text"
+			        	Text item=Garage_4CH_ipaddress icon="text"
+                    	Text item=Garage_4CH_wifirssi icon="qualityofservice"
 					}
 				}
 				Text label="Z-Wave Devices" icon="receiver"{
