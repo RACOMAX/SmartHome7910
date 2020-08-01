@@ -1,0 +1,28 @@
+rule "New Event Log"
+when
+    Item EventLog received update
+then
+    val String PATTERN = " HH:mm"
+    var String ts = now.toString(PATTERN)
+
+    if (EventLog18.state != NULL) postUpdate(EventLog19, EventLog18.state)
+    if (EventLog17.state != NULL) postUpdate(EventLog18, EventLog17.state)
+    if (EventLog16.state != NULL) postUpdate(EventLog17, EventLog16.state)
+    if (EventLog15.state != NULL) postUpdate(EventLog16, EventLog15.state)
+    if (EventLog14.state != NULL) postUpdate(EventLog15, EventLog14.state)
+    if (EventLog13.state != NULL) postUpdate(EventLog14, EventLog13.state)
+    if (EventLog12.state != NULL) postUpdate(EventLog13, EventLog12.state)
+    if (EventLog11.state != NULL) postUpdate(EventLog12, EventLog11.state)
+    if (EventLog10.state != NULL) postUpdate(EventLog11, EventLog10.state)
+    if (EventLog09.state != NULL) postUpdate(EventLog10, EventLog09.state)
+    if (EventLog08.state != NULL) postUpdate(EventLog09, EventLog08.state)
+    if (EventLog07.state != NULL) postUpdate(EventLog08, EventLog07.state)
+    if (EventLog06.state != NULL) postUpdate(EventLog07, EventLog06.state)
+    if (EventLog05.state != NULL) postUpdate(EventLog06, EventLog05.state)
+    if (EventLog04.state != NULL) postUpdate(EventLog05, EventLog04.state)
+    if (EventLog03.state != NULL) postUpdate(EventLog04, EventLog03.state)
+    if (EventLog02.state != NULL) postUpdate(EventLog03, EventLog02.state)
+    if (EventLog01.state != NULL) postUpdate(EventLog02, EventLog01.state)
+    if (EventLog00.state != NULL) postUpdate(EventLog01, EventLog00.state)
+    if (EventLog.state != NULL) postUpdate(EventLog00, EventLog.state + ts)
+end

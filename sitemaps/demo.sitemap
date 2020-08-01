@@ -82,7 +82,9 @@ sitemap demo label="Smart Home"
 			    Text item=Garage_Door_Contact icon="garagedoor"
 			}
 			Frame label="Sensors" {
-            Text item=Garage_4CH_Temp_In valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"] icon="temperature"
+                Text item=Garage_4CH_Temp_In icon="temperature" valuecolor=[Garage_4CH_Temp_In=="NULL"="lightgray",Garage_4CH_Temp_In>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
+                Text item=Garage_4CH_Temp_Attic icon="temperature" valuecolor=[Garage_4CH_Temp_Attic=="NULL"="lightgray",Garage_4CH_Temp_Attic>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
+                Text item=Garage_4CH_Temp_Out icon="temperature" valuecolor=[Garage_4CH_Temp_Out=="NULL"="lightgray",Garage_4CH_Temp_Out>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
 			}
 		}
 	}	
@@ -215,6 +217,8 @@ sitemap demo label="Smart Home"
 			}
 		}
 		Text label="System Settings" icon="settings" 
+		Group item=gEventLog
+        	
 	}	
 /*	Frame label="Do not touch" {
 		Text label="Work in Progress" icon="energy" {
