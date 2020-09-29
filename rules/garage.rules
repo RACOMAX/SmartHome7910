@@ -67,7 +67,10 @@ then
         //say("The garage door is Opening")
         Garage_Door.postUpdate(OFF)
         Garage_Door_Contact.postUpdate(OPEN)
-        Garage_Inside_Switch.postUpdate(ON)
+        
+        //Turn ON Garage Lights when the door opens
+        Garage_Inside_Switch.sendCommand(ON)
+        
         //logDebug("Rules", "Lock: Update garage door states after barrier_state events (GarageAttached_Door) [{}]",Garage_Door.state)
         //sendTelegram("bot2", "Lock: Update garage door barrier_state after switch state change events (GarageAttached_Door_Position) [{}]",Garage_Door_Position.state)
         
@@ -79,6 +82,10 @@ then
         //say("The garage door is Closing")
         Garage_Door.postUpdate(ON)
         Garage_Door_Contact.postUpdate(CLOSED)
+
+        //Turn OFF Garage Lights when the door closes
+        Garage_Inside_Switch.sendCommand(OFF)
+
         //logDebug("Rules", "Lock: Update garage door states after barrier_state events (GarageAttached_Door) [{}]",Garage_Door.state)
 	    //sendTelegram("bot2", "Lock: Update garage door barrier_state after switch state change events (GarageAttached_Door_Position) [{}]",Garage_Door_Position.state)
         
