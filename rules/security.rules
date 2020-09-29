@@ -5,7 +5,7 @@ when
 then
     //say("The garage door is Opening")
     //sendTelegram("bot1", "Security Testing") 
-    //postUpdate(EventLog, "Sec System: ARMED FULL -> ")
+    postUpdate(EventLog, "Sec System: ARMED FULL -> ")
     
 
 end

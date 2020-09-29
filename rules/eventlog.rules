@@ -5,6 +5,16 @@ then
     val String PATTERN = " HH:mm"
     var String ts = now.toString(PATTERN)
 
+    if (EventLog28.state != NULL) postUpdate(EventLog29, EventLog28.state)
+    if (EventLog27.state != NULL) postUpdate(EventLog28, EventLog27.state)
+    if (EventLog26.state != NULL) postUpdate(EventLog27, EventLog26.state)
+    if (EventLog25.state != NULL) postUpdate(EventLog26, EventLog25.state)
+    if (EventLog24.state != NULL) postUpdate(EventLog25, EventLog24.state)
+    if (EventLog23.state != NULL) postUpdate(EventLog24, EventLog23.state)
+    if (EventLog22.state != NULL) postUpdate(EventLog23, EventLog22.state)
+    if (EventLog21.state != NULL) postUpdate(EventLog22, EventLog21.state)
+    if (EventLog20.state != NULL) postUpdate(EventLog21, EventLog20.state)
+    if (EventLog19.state != NULL) postUpdate(EventLog20, EventLog19.state)
     if (EventLog18.state != NULL) postUpdate(EventLog19, EventLog18.state)
     if (EventLog17.state != NULL) postUpdate(EventLog18, EventLog17.state)
     if (EventLog16.state != NULL) postUpdate(EventLog17, EventLog16.state)
