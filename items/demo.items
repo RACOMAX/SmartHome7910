@@ -55,7 +55,7 @@ DateTime H7910_Sunset_Time            "Sunset [%1$tH:%1$tM]"          <sunset>  
 //systeminfo:computer:openhab:network#mac
 //systeminfo:computer:openhab:process#load
 Number SystemInfo_Uptime "System Uptime" { channel = "systeminfo:computer:openhab:cpu#uptime" }
-Number SystemInfo_Load "System Load" { channel = "systeminfo:computer:openhab:process#load" }
+//Number SystemInfo_Load "System Load" { channel = "systeminfo:computer:openhab:process#load" }
 Number SystemInfo_Memmory_UsedPerc "Memmory Used" { channel = "systeminfo:computer:openhab:memory#usedPercent" }
 Number SystemInfo_Storage_UsedPerc "Storage Used" { channel = "systeminfo:computer:openhab:storage#usedPercent" }
 Number SystemInfo_Sensor_CpuTemp "CPU Temperture [%.1f °C]" { channel = "systeminfo:computer:openhab:sensors#cpuTemp" }
@@ -70,16 +70,17 @@ Number Garage_Door_Position "Overhead Door [MAP(garagedoor.map):%s]" { channel =
 String Garage_Door_Alarm "Overhead Door" { channel = "zwave:device:54d243ff:node8:alarm_raw" }
 Contact Garage_Door_Contact "Overhead Door [%s]"
 
+///////////////////////////
 // GARAGE - SONOFF 4CH R2
 ///////////////////////////
 Switch Garage_Inside_Switch "Inside Lights" {channel="mqtt:topic:15e3ffe1:power1", expire="60m,command=OFF"}
 Switch Garage_Attic_Switch "Attic Lights" {channel="mqtt:topic:15e3ffe1:power2", expire="60m,command=OFF"}
 Switch Garage_Alley_Switch "Back Alley Lights" {channel="mqtt:topic:15e3ffe1:power3", expire="60m,command=OFF"}
 Switch Garage_Patio_Switch "Back Yard Lights" {channel="mqtt:topic:15e3ffe1:power4", expire="60m,command=OFF"}
-String Garage_4CH_Temp_In "Inside Temperature" {channel="mqtt:topic:15e3ffe1:temperature"}
-//String Garage_4CH_Temp_Attic "Attic Temperature" {channel="mqtt:topic:15e3ffe1:temperature"}
-//String Garage_4CH_Temp_Out "Outside Temperature" {channel="mqtt:topic:15e3ffe1:temperature"}
-//String Garage_4CH_Temp_Out "Outdoor [%.1f °C]" {channel="mqtt:topic:15e3ffe1:temperature"}
+String Garage_4CH_Temp_In "Temperature - Inside" {channel="mqtt:topic:15e3ffe1:temperature3"}
+String Garage_4CH_Temp_Attic "Temperature - Attic" {channel="mqtt:topic:15e3ffe1:temperature2"}
+String Garage_4CH_Temp_Out "Temperature - Outside" {channel="mqtt:topic:15e3ffe1:temperature"}
+String Garage_4CH_refreshtime "Refresh Time" {channel="mqtt:topic:15e3ffe1:refreshtime"}
 String Garage_4CH_hostname "Hostname" {channel="mqtt:topic:15e3ffe1:hostname"}
 String Garage_4CH_availability "Availability" {channel="mqtt:topic:15e3ffe1:availability"}
 String Garage_4CH_module "Module" {channel="mqtt:topic:15e3ffe1:module"}

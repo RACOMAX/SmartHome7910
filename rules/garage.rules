@@ -1,44 +1,3 @@
-/*// put this import at the top of your rule file
-import org.eclipse.smarthome.model.script.ScriptServiceUtil
-
-rule "Update garage door state"
-when
-    Member of gGarageDoorOpener received update
-then
-    sendTelegram("bot2", "Rule activated")
-    val actionItem = ScriptServiceUtil.getItemRegistry.getItem(if (triggeringItem.name.contains("_Position")) triggeringItem.name.replace("_Position","") else (triggeringItem.name + "_Position"))
-    logDebug("Rules", "Garage door event: [{}] was updated to {} ({}): action item [{}], current state {} ({})", triggeringItem.name, triggeringItem.state, transform("MAP", "garagedoor.map", triggeringItem.state.toString), actionItem.name, actionItem.state, transform("MAP", "garagedoor.map", actionItem.state.toString))
-    switch (triggeringItem.state.toString) {
-        case "255",//open
-        case "254",//opening
-        case "253",//stopped
-        case "252" : {//closing
-            if (actionItem.state != OFF) {
-                actionItem.postUpdate(OFF)
-                logDebug("Rules", "Garage door event: updated switch [{}] to OFF (OPEN) after barrier_state update", actionItem.name)
-            }
-        }
-        case "0" : {//closed
-            if (actionItem.state != ON) {
-                actionItem.postUpdate(ON)
-                logDebug("Rules", "Garage door event: updated switch [{}] to ON (CLOSED) after barrier_state update", actionItem.name)
-            }
-        }
-        case "ON" : {
-            if (actionItem.state != 0) {
-                actionItem.sendCommand(0)
-                logDebug("Rules", "Garage door event: updated barrier_state [{}] to 0 (CLOSED) after switch state update", actionItem.name)
-            }
-        }
-        case "OFF" : {
-            if (actionItem.state != 255) {
-                actionItem.sendCommand(255)
-                logDebug("Rules", "Garage door event: updated barrier_state [{}] to 255 (OPEN) after switch state update", actionItem.name)
-            }
-        }
-    }
-*/
-
 rule "Update garage door barrier_state after switch state change events"
 when
 	Item Garage_Door changed
@@ -84,7 +43,7 @@ then
         Garage_Door_Contact.postUpdate(CLOSED)
 
         //Turn OFF Garage Lights when the door closes
-        Garage_Inside_Switch.sendCommand(OFF)
+        //Garage_Inside_Switch.sendCommand(OFF)
 
         //logDebug("Rules", "Lock: Update garage door states after barrier_state events (GarageAttached_Door) [{}]",Garage_Door.state)
 	    //sendTelegram("bot2", "Lock: Update garage door barrier_state after switch state change events (GarageAttached_Door_Position) [{}]",Garage_Door_Position.state)
@@ -92,20 +51,3 @@ then
         
     }
 end
-
-///////////////////////////////////////////////////////////////////////
-// SEND TELGRAM NOTIFICATION WHEN THE GARAGE DOOR GETS OPENED OR CLOSED
-///////////////////////////////////////////////////////////////////////
-/*
-rule "Garage Door Open Telegram"
-when
-    Item Garage_Door_Position changed
-then
-    if( Garage_Door_Position.state > 0 ) {
-        sendTelegram("bot2", "Garage door is: OPEN") 
-    }
-    else{
-        sendTelegram("bot2", "Garage door is: CLOSED")
-    }
-end
-*/
