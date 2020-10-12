@@ -1,0 +1,31 @@
+//Number ESP8266MOD_146674_temperature "Temperature [%.01f °C]" {channel="mqtt:topic:b189eb9c:temperature"}
+//Number ESP8266MOD_146674_wetdry "Water Level" {channel="mqtt:topic:b189eb9c:wetdry"}
+//Switch ESP8266MOD_146674_buzzer "Buzzer" {channel="mqtt:topic:b189eb9c:buzzer"}
+
+
+rule "SUMPUMP High Water Level Alarm"
+when
+	Item ESP8266MOD_146674_wetdry changed
+then
+    //sendTelegram("bot2", "SUMPUMP: Rule Running")
+    //ESP8266MOD_146674_buzzer.sendCommand(ON)
+
+    
+    if (ESP8266MOD_146674_wetdry.state > 1000 ) {
+		ESP8266MOD_146674_buzzer.sendCommand(ON)
+        //ESP8266MOD_146674_wetdry_Contact.postUpdate(OPEN)
+        sendTelegram("bot2", "SUMPUMP: High Water Level")
+        postUpdate(EventLog, "SUMPUMP: High Water Level")
+        //sumpump_timer = createTimer(now.plusMinutes(1))
+    }
+    else if (ESP8266MOD_146674_wetdry.state < 1000 && ESP8266MOD_146674_buzzer.state == ON ) {
+		ESP8266MOD_146674_buzzer.sendCommand(OFF)
+        //ESP8266MOD_146674_wetdry_Contact.postUpdate(CLOSED)
+        sendTelegram("bot2", "SUMPUMP: Water Level back to low")
+        postUpdate(EventLog, "SUMPUMP: Water Level back to low")
+    }
+
+        
+end
+
+

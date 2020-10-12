@@ -32,12 +32,18 @@ sitemap demo label="Smart Home"
 				Switch item=Light_BM_BM_Lights icon="light"
 				//Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
 			}
+		    Frame label="SUMPUMP" {
+		        Text item=ESP8266MOD_146674_temperature icon="temperature" valuecolor=[ESP8266MOD_146674_temperature=="NULL"="lightgray",ESP8266MOD_146674_temperature>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
+			    Text item=ESP8266MOD_146674_wetdry icon="rain" 
+				//Text item=ESP8266MOD_146674_wetdrycontact icon="water" 
+				Switch item=ESP8266MOD_146674_buzzer icon="soundvolume"
+			}
 		}
 		Text label="Main Floor" icon="groundfloor" {    
 			Frame label="Kitchen and Dinning" {
                 Switch item=Light_MF_KT_Lights icon="light"
 				Switch item=Light_MF_DIN_Switch icon="light"
- 	            Text item=MS_MF_Dinning_Temp valuecolor=[MS_MF_Dinning_Temp=="NULL"="lightgray",MS_MF_Dinning_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
+ 	            Text item=MS_MF_Dinning_Temp valuecolor=[MS_MF_Dinning_Temp=="NULL"="lightgray",MS_MF_Dinning_Temp>25="red",>0="green",<=0="blue"]
 			}
 			Frame label="Living Room" {
 				Switch item=Light_MF_LR_Lights icon="light"
@@ -48,7 +54,7 @@ sitemap demo label="Smart Home"
 				Switch item=Light_MF_ENT_Switch icon="light"
 				Switch item=Light_MF_STA_Switch icon="light"
 				Switch item=Light_MF_RENT_Switch icon="light"
-				
+				Switch item=Light_MF_DECK_Switch icon="light"
 			}
             
 	    }	
@@ -59,7 +65,7 @@ sitemap demo label="Smart Home"
 				Switch item=Light_SF_MB_Switch icon="light"
 				Switch item=Light_MB_CLO_Switch icon="light"
 				Switch item=Light_MB_BA_Switch icon="light"
-				Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
+				Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>25="red",>0="green",<=0="blue"]
 			}
 			Frame label="Common Areas" {
 				Switch item=Light_SF_STA_Lights icon="light"
@@ -83,9 +89,9 @@ sitemap demo label="Smart Home"
 			    Text item=Garage_Door_Contact icon="garagedoor"
 			}
 			Frame label="Sensors" {
-                Text item=Garage_4CH_Temp_In icon="temperature" valuecolor=[Garage_4CH_Temp_In=="NULL"="lightgray",Garage_4CH_Temp_In>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
-                Text item=Garage_4CH_Temp_Attic icon="temperature" valuecolor=[Garage_4CH_Temp_Attic=="NULL"="lightgray",Garage_4CH_Temp_Attic>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
-                Text item=Garage_4CH_Temp_Out icon="temperature" valuecolor=[Garage_4CH_Temp_Out=="NULL"="lightgray",Garage_4CH_Temp_Out>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
+                Text item=Garage_4CH_Temp_In icon="temperature" valuecolor=[Garage_4CH_Temp_In=="NULL"="lightgray",Garage_4CH_Temp_In>25="red",>0="green",<=0="blue"]
+                Text item=Garage_4CH_Temp_Attic icon="temperature" valuecolor=[Garage_4CH_Temp_Attic=="NULL"="lightgray",Garage_4CH_Temp_Attic>25="red",>0="green",<=0="blue"]
+                Text item=Garage_4CH_Temp_Out icon="temperature" valuecolor=[Garage_4CH_Temp_Out=="NULL"="lightgray",Garage_4CH_Temp_Out>25="red",>0="green",<=0="blue"]
 			    Text item=Garage_4CH_refreshtime icon="time"
 			}
 		}
@@ -94,6 +100,9 @@ sitemap demo label="Smart Home"
 		Text label="Great Outdoors" icon="terrace" {
             Frame label="Outdoor Lights" {
 				Switch item=Light_MF_DECK_Switch icon="light"
+				Switch item=Garage_Patio_Switch icon="light"
+				Switch item=Garage_Alley_Switch icon="light"
+			    Switch item=Light_MF_PO_Lights icon="light"
 				Switch item=Light_OUT_CHR_Switch icon="light"
             }
             Frame label="Astronomical Data" {
@@ -101,7 +110,7 @@ sitemap demo label="Smart Home"
 		        Text item=H7910_Sunset_Time
 	        }
             Frame label="Weather" {
-			    Text item=Garage_4CH_Temp_Out icon="temperature" valuecolor=[Garage_4CH_Temp_Out=="NULL"="lightgray",Garage_4CH_Temp_Out>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
+			    Text item=Garage_4CH_Temp_Out icon="temperature" valuecolor=[Garage_4CH_Temp_Out=="NULL"="lightgray",Garage_4CH_Temp_Out>25="red",>0="green",<=0="blue"]
 			}
 		}
 	}
