@@ -262,10 +262,41 @@ Switch ALS_MF_Switch "Siren and Strobe" {channel="zwave:device:54d243ff:node15:s
 ///////////////////////////////////
 //Sensors
 Number ESP8266MOD_146674_temperature "Temperature [%.01f °C]" {channel="mqtt:topic:b189eb9c:temperature"}
+Dimmer ESP8266MOD_146674_humidity "Humidity" {channel="mqtt:topic:b189eb9c:humidity"}
+Number ESP8266MOD_146674_dewpoint "Dew Point" {channel="mqtt:topic:b189eb9c:dewpoint"}
+String ESP8266MOD_146674_refreshtime "Refresh Time" {channel="mqtt:topic:b189eb9c:refreshtime"}
 Number ESP8266MOD_146674_wetdry "Water Level" {channel="mqtt:topic:b189eb9c:wetdry"}
 Switch ESP8266MOD_146674_buzzer "Buzzer" {channel="mqtt:topic:b189eb9c:buzzer"}
+
 //Contact ESP8266MOD_146674_wetdry_Contact "Water Level"
 //Contact ESP8266MOD_146674_wetdrycontact
+
+//Device Status
+//String Garage_4CH_hostname "Hostname" {channel="mqtt:topic:15e3ffe1:hostname"}
+//String Garage_4CH_availability "Availability" {channel="mqtt:topic:15e3ffe1:availability"}
+//String Garage_4CH_module "Module" {channel="mqtt:topic:15e3ffe1:module"}
+//String Garage_4CH_version "FW Version" {channel="mqtt:topic:15e3ffe1:version"}
+//String Garage_4CH_ipaddress "IP Address" {channel="mqtt:topic:15e3ffe1:ipaddress"}
+//String Garage_4CH_macaddress "MAC Address" {channel="mqtt:topic:15e3ffe1:macaddress"}
+//String Garage_4CH_wifirssi "WIFI RSSI" {channel="mqtt:topic:15e3ffe1:rssi"}
+//String Garage_4CH_wifisignal "WIFI Signal" {channel="mqtt:topic:15e3ffe1:signal"}
+//String Garage_4CH_wifichannel "WIFI Channel" {channel="mqtt:topic:15e3ffe1:channel"}
+//String Garage_4CH_wifibssid "WIFI BSSID" {channel="mqtt:topic:15e3ffe1:bssid"}
+//String Garage_4CH_wifissid "WIFI SSID" {channel="mqtt:topic:15e3ffe1:ssid"}
+//String Garage_4CH_uptime "Uptime" {channel="mqtt:topic:15e3ffe1:uptime"}
+//String Garage_4CH_restartreason "Restart Reason" {channel="mqtt:topic:15e3ffe1:restartreason"}
+
+// Master BedRoom LAB - ESP8266MOD-144A74
+/////////////////////////////////////////
+//Sensors
+Number ESP8266MOD_144A74_temperature "Temperature [%.01f °C]" {channel="mqtt:topic:6608557f:temperature"}
+Dimmer ESP8266MOD_144A74_humidity "Humidity" {channel="mqtt:topic:6608557f:humidity"}
+Number ESP8266MOD_144A74_dewpoint "Dew Point" {channel="mqtt:topic:6608557f:dewpoint"}
+String ESP8266MOD_144A74_refreshtime "Refresh Time" {channel="mqtt:topic:6608557f:refreshtime"}
+Switch ESP8266MOD_144A74_buzzer "Buzzer" {channel="mqtt:topic:6608557f:buzzer"}
+//Contact ESP8266MOD_146674_wetdry_Contact "Water Level"
+//Contact ESP8266MOD_146674_wetdrycontact
+
 
 //Device Status
 //String Garage_4CH_hostname "Hostname" {channel="mqtt:topic:15e3ffe1:hostname"}

@@ -27,16 +27,21 @@ sitemap demo label="Smart Home"
 	}
 	Frame label="Indoor" {
 		Text label="Basement" icon="cellar" {
-	        Frame label="Basement" {
+	        Frame label="Lights" {
 		        Switch item=Light_BM_OFF_Lights icon="light"
 				Switch item=Light_BM_BM_Lights icon="light"
 				//Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
 			}
-		    Frame label="SUMPUMP" {
-		        Text item=ESP8266MOD_146674_temperature icon="temperature" valuecolor=[ESP8266MOD_146674_temperature=="NULL"="lightgray",ESP8266MOD_146674_temperature>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
-			    Text item=ESP8266MOD_146674_wetdry icon="rain" 
+		    Frame label="SUMP PUMP" {
+		        //Text item=ESP8266MOD_146674_temperature icon="temperature" valuecolor=[ESP8266MOD_146674_temperature=="NULL"="lightgray",ESP8266MOD_146674_temperature>30="red",>25="orange",>18="green",>5="blue",<=5="orange"]
+			    Text item=ESP8266MOD_146674_wetdry icon="cistern" 
 				//Text item=ESP8266MOD_146674_wetdrycontact icon="water" 
-				Switch item=ESP8266MOD_146674_buzzer icon="soundvolume"
+				//Switch item=ESP8266MOD_146674_buzzer icon="soundvolume"
+				Text item=ESP8266MOD_146674_temperature icon="temperature"
+                Text item=ESP8266MOD_146674_humidity icon="humidity"
+                Text item=ESP8266MOD_146674_dewpoint icon="rain"
+                Text item=ESP8266MOD_146674_refreshtime icon="time"
+                Switch item=ESP8266MOD_146674_buzzer icon="soundvolume"
 			}
 		}
 		Text label="Main Floor" icon="groundfloor" {    
@@ -65,7 +70,15 @@ sitemap demo label="Smart Home"
 				Switch item=Light_SF_MB_Switch icon="light"
 				Switch item=Light_MB_CLO_Switch icon="light"
 				Switch item=Light_MB_BA_Switch icon="light"
-				Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>25="red",>0="green",<=0="blue"]
+                Text item=ESP8266MOD_144A74_temperature icon="temperature"
+                Text item=ESP8266MOD_144A74_humidity icon="humidity"
+                Text item=ESP8266MOD_144A74_dewpoint icon="rain"
+                Text item=ESP8266MOD_144A74_refreshtime icon="time"
+                Switch item=ESP8266MOD_144A74_buzzer icon="soundvolume"
+				
+			}
+            Frame label="Rosalie's Bedroom" {
+                Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>25="red",>0="green",<=0="blue"]
 			}
 			Frame label="Common Areas" {
 				Switch item=Light_SF_STA_Lights icon="light"
