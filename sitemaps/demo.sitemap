@@ -37,7 +37,7 @@ sitemap demo label="Smart Home"
 			    Text item=ESP8266MOD_146674_wetdry icon="cistern" 
 				//Text item=ESP8266MOD_146674_wetdrycontact icon="water" 
 				//Switch item=ESP8266MOD_146674_buzzer icon="soundvolume"
-				Text item=ESP8266MOD_146674_temperature icon="temperature"
+				Text item=ESP8266MOD_146674_temperature icon="temperature" valuecolor=[ESP8266MOD_146674_temperature=="NULL"="lightgray",ESP8266MOD_146674_temperature>25="red",>0="green",<=0="blue"]
                 Text item=ESP8266MOD_146674_humidity icon="humidity"
                 Text item=ESP8266MOD_146674_dewpoint icon="rain"
                 Text item=ESP8266MOD_146674_refreshtime icon="time"
@@ -48,7 +48,7 @@ sitemap demo label="Smart Home"
 			Frame label="Kitchen and Dinning" {
                 Switch item=Light_MF_KT_Lights icon="light"
 				Switch item=Light_MF_DIN_Switch icon="light"
- 	            Text item=MS_MF_Dinning_Temp valuecolor=[MS_MF_Dinning_Temp=="NULL"="lightgray",MS_MF_Dinning_Temp>25="red",>0="green",<=0="blue"]
+ 	            Text item=MS_MF_Dinning_Temp icon="temperature" valuecolor=[MS_MF_Dinning_Temp=="NULL"="lightgray",MS_MF_Dinning_Temp>25="red",>0="green",<=0="blue"]
 			}
 			Frame label="Living Room" {
 				Switch item=Light_MF_LR_Lights icon="light"
@@ -70,7 +70,7 @@ sitemap demo label="Smart Home"
 				Switch item=Light_SF_MB_Switch icon="light"
 				Switch item=Light_MB_CLO_Switch icon="light"
 				Switch item=Light_MB_BA_Switch icon="light"
-                Text item=ESP8266MOD_144A74_temperature icon="temperature"
+                Text item=ESP8266MOD_144A74_temperature icon="temperature" valuecolor=[ESP8266MOD_144A74_temperature=="NULL"="lightgray",ESP8266MOD_144A74_temperature>25="red",>0="green",<=0="blue"]
                 Text item=ESP8266MOD_144A74_humidity icon="humidity"
                 Text item=ESP8266MOD_144A74_dewpoint icon="rain"
                 Text item=ESP8266MOD_144A74_refreshtime icon="time"
@@ -78,7 +78,7 @@ sitemap demo label="Smart Home"
 				
 			}
             Frame label="Rosalie's Bedroom" {
-                Text item=WL_BS_SP_Temp valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>25="red",>0="green",<=0="blue"]
+                Text item=WL_BS_SP_Temp icon="temperature" valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>25="red",>0="green",<=0="blue"]
 			}
 			Frame label="Common Areas" {
 				Switch item=Light_SF_STA_Lights icon="light"
