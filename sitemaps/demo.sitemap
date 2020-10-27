@@ -101,12 +101,16 @@ sitemap demo label="Smart Home"
 			    Switch item=Garage_Door
 			    Text item=Garage_Door_Contact icon="garagedoor"
 			}
+			Frame label="HVAC" {	
+			    Switch item=GR_HEATER_Switch icon="fan"
+			}
 			Frame label="Sensors" {
                 Text item=Garage_4CH_Temp_In icon="temperature" valuecolor=[Garage_4CH_Temp_In=="NULL"="lightgray",Garage_4CH_Temp_In>25="red",>0="green",<=0="blue"]
                 Text item=Garage_4CH_Temp_Attic icon="temperature" valuecolor=[Garage_4CH_Temp_Attic=="NULL"="lightgray",Garage_4CH_Temp_Attic>25="red",>0="green",<=0="blue"]
                 Text item=Garage_4CH_Temp_Out icon="temperature" valuecolor=[Garage_4CH_Temp_Out=="NULL"="lightgray",Garage_4CH_Temp_Out>25="red",>0="green",<=0="blue"]
 			    Text item=Garage_4CH_refreshtime icon="time"
 			}
+			
 		}
 	}	
 	Frame label="Outdoor" {

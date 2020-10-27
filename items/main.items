@@ -208,5 +208,176 @@ Switch ESP8266MOD_144A74_buzzer "Buzzer" {channel="mqtt:topic:6608557f:buzzer"}
 //String Garage_4CH_restartreason "Restart Reason" {channel="mqtt:topic:15e3ffe1:restartreason"}
 
 
+////////////////////////////////////////////////////////////////////////////////////////
+/* GARAGE *////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+
+//
+// GARAGE HEATER
+// SONOFF DUAL - Tasmota Lite
+//
+Switch GR_HEATER_SwitchSoft "Heater - Soft" {channel="mqtt:topic:fc660dc0:power1"}
+Switch GR_HEATER_Switch "Heater" {channel="mqtt:topic:fc660dc0:power2"}
+//String Light_SF_MB_hostname "Hostname" {channel="mqtt:topic:1aed68fe:hostname"}
+//String Light_SF_MB_availability "Availability" {channel="mqtt:topic:1aed68fe:availability"}
+//String Light_SF_MB_module "Module" {channel="mqtt:topic:1aed68fe:module"}
+//String Light_SF_MB_version "FW Version" {channel="mqtt:topic:1aed68fe:version"}
+//String Light_SF_MB_ipaddress "IP Address" {channel="mqtt:topic:1aed68fe:ipaddress"}
+//String Light_SF_MB_wifirssi "WIFI RSSI" {channel="mqtt:topic:1aed68fe:wifi-rssi"}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+/* Security System *///////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+
+Switch Sec_Arm_Full "Armed House - Full"
+Switch Sec_Arm_Perimeter "Armed House - Perimeter"
+Switch Sec_Arm_Garage "Armed Garage - Door"
+
+Switch Sec_Siren_Status "Siren"
+Switch Sec_Strobe_Status "Strobe"
+Switch Sec_FireAlarm_Status "Fire Alarm"
+
+//
+// Alarm and Strobe
+// GoControl WA105DBZ Siren and Strobe
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+Number ALS_MF_Bat "Siren and Strobe" {channel="zwave:device:54d243ff:node15:battery-level"}
+Switch ALS_MF_Switch "Siren and Strobe" {channel="zwave:device:54d243ff:node15:switch_binary"}
+//Number Mode_Siren "Siren Mode" <siren> { zwave="14:command=configuration, parameter=0" }
+//Number Time_Siren "Siren Auto Stop" <siren> { zwave="14:command=configuration, parameter=1" }
+
+// DINING ROOM Motion Sensor //
+// GoControl WAPIRZ-1 PIR Motion Detector
+Number MS_MF_Dinning_Temp  " Dining Room Temperature [%.01f °C]" <temperature> (Temperature)  ["Temperature", "Measurement"] {channel="zwave:device:54d243ff:node5:sensor_temperature"}
+Number MS_MF_Dinning_Bat "Dining Room Motion" {channel="zwave:device:54d243ff:node5:battery-level"}
+//
+
+///////////////////////
+/* Windows and Doors */
+///////////////////////
+//
+// FRONT DOOR DEADLOCK 
+// Kiwikset SmartCode 888 Touchpad Electronic Deadbolt
+Switch WD_MF_FD_Lock "Front Door Lock" {channel="zwave:device:54d243ff:node7:lock_door"}
+Number WD_MF_FD_Lock_Bat "Front Door Lock" {channel="zwave:device:54d243ff:node7:battery-level"}
+//
+// BACK DOOR DEADLOCK
+// Kiwikset SmartCode 888 Touchpad Electronic Deadbolt
+Switch WD_MF_BD_Lock "Back Door Lock" {channel="zwave:device:54d243ff:node6:lock_door"}
+Number WD_MF_BD_Lock_Bat "Back Door Lock" {channel="zwave:device:54d243ff:node6:battery-level"}
+//
+
+// Front Door Sensor
+// GoControl WADWAZ-1 Door/Windows Sensor
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+Contact WDS_MF_FD_Sensor_door "Front Door [%s]" {channel="zwave:device:54d243ff:node12:sensor_door"}
+Switch WDS_MF_BS_Alarm_Sensor "Basement Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_entry"}
+Switch WDS_MF_BS_Alarm_Tamper "Basement Door Sensor" {channel="zwave:device:54d243ff:node12:alarm_tamper"}
+Switch WDS_MF_BS_Ext_Switch "Basement Door Sensor" {channel="zwave:device:54d243ff:node12:sensor_binary"}
+Number WDS_MF_FD_Bat "Front Door Sensor" {channel="zwave:device:54d243ff:node12:battery-level"}
+//
+// Back Door Sensor
+// GoControl WADWAZ-1 Door/Windows Sensor
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+Contact WDS_MF_BD_Sensor_door "Back Door [%s]" {channel="zwave:device:54d243ff:node13:sensor_door"}
+Switch WDS_MF_BS_Alarm_Sensor "Basement Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_entry"}
+Switch WDS_MF_BS_Alarm_Tamper "Basement Door Sensor" {channel="zwave:device:54d243ff:node13:alarm_tamper"}
+Switch WDS_MF_BS_Ext_Switch "Basement Door Sensor" {channel="zwave:device:54d243ff:node13:sensor_binary"}
+Number WDS_MF_BD_Bat "Back Door Sensor" {channel="zwave:device:54d243ff:node13:battery-level"}
+//
+// Basement Door
+// GoControl WADWAZ-1 Door/Windows Sensor
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+Contact WDS_MF_BS_Sensor_door "Basement Door [%s]" {channel="zwave:device:54d243ff:node10:sensor_door"}
+Switch WDS_MF_BS_Alarm_Sensor "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:alarm_entry"}
+Switch WDS_MF_BS_Alarm_Tamper "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:alarm_tamper"}
+Switch WDS_MF_BS_Ext_Switch "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:sensor_binary"}
+Number WDS_MF_BS_Bat "Basement Door Sensor" {channel="zwave:device:54d243ff:node10:battery-level"}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// BASEMENT  //////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+//
+// Water Leak Sensor - SumPump
+// WAXMAN leakSMART Water Sensor V2
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+Number WL_BS_SP_Bat "SumPump Water Leak Sensor" {channel="zigbee:device:91e3c8e6:0022a3000013a6d9:0022A3000013A6D9_1_batterylevel"}
+Number WL_BS_SP_Temp  "Temperature [%.01f °C]" <temperature> (Temperature)  ["Temperature", "Measurement"] {channel="zigbee:device:91e3c8e6:0022a3000013a6d9:0022A3000013A6D9_1_temperature"}
+//
+// Alarm and Strobe
+// GoControl WA105DBZ Siren and Strobe
+/* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
+//Number ALS_MF_Bat "Siren and Strobe" {channel="zwave:device:54d243ff:node15:battery-level"}
+//Switch ALS_MF_Switch "Siren and Strobe" {channel="zwave:device:54d243ff:node15:switch_binary"}
+//Number Mode_Siren "Siren Mode" <siren> { zwave="14:command=configuration, parameter=0" }
+//Number Time_Siren "Siren Auto Stop" <siren> { zwave="14:command=configuration, parameter=1" }
+
+// BASEMENT LAB - ESP8266MOD-146674
+///////////////////////////////////
+//Sensors
+Number ESP8266MOD_146674_temperature "Temperature [%.01f °C]" {channel="mqtt:topic:b189eb9c:temperature"}
+Dimmer ESP8266MOD_146674_humidity "Humidity" {channel="mqtt:topic:b189eb9c:humidity"}
+Number ESP8266MOD_146674_dewpoint "Dew Point" {channel="mqtt:topic:b189eb9c:dewpoint"}
+String ESP8266MOD_146674_refreshtime "Refresh Time" {channel="mqtt:topic:b189eb9c:refreshtime"}
+Number ESP8266MOD_146674_wetdry "Water Level" {channel="mqtt:topic:b189eb9c:wetdry"}
+Switch ESP8266MOD_146674_buzzer "Buzzer" {channel="mqtt:topic:b189eb9c:buzzer"}
+
+//Contact ESP8266MOD_146674_wetdry_Contact "Water Level"
+//Contact ESP8266MOD_146674_wetdrycontact
+
+// Basement Lights //
+// DZS15 Scene Capable Push On/Off //
+Switch Light_BM_BM_Lights "Basement Lights" {channel="zwave:device:54d243ff:node24:switch_binary", expire="60m,command=OFF"}
+Number Light_BM_BM_LightsScene "Basement Lights Scene" {channel="zwave:device:54d243ff:node24:scene_number"}
+//Sonoff Mini - Office //
+Switch Light_BM_OFF_Lights "Office Lights" {channel="mqtt:topic:7007c32c:000000003"}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// EVENT LOG ITEMS ////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+
+Group gEventLog "Actions Log" (All) 
+
+String EventLog00   " 1: [%s]" (gEventLog)
+String EventLog01   " 2: [%s]" (gEventLog)
+String EventLog02   " 3: [%s]" (gEventLog)
+String EventLog03   " 4: [%s]" (gEventLog)
+String EventLog04   " 5: [%s]" (gEventLog)
+String EventLog05   " 6: [%s]" (gEventLog)
+String EventLog06   " 7: [%s]" (gEventLog)
+String EventLog07   " 8: [%s]" (gEventLog)
+String EventLog08   " 9: [%s]" (gEventLog)
+String EventLog09   "10: [%s]" (gEventLog)
+String EventLog10   "11: [%s]" (gEventLog)
+String EventLog11   "12: [%s]" (gEventLog)
+String EventLog12   "13: [%s]" (gEventLog)
+String EventLog13   "14: [%s]" (gEventLog)
+String EventLog14   "15: [%s]" (gEventLog)
+String EventLog15   "16: [%s]" (gEventLog)
+String EventLog16   "17: [%s]" (gEventLog)
+String EventLog17   "18: [%s]" (gEventLog)
+String EventLog18   "19: [%s]" (gEventLog)
+String EventLog19   "20: [%s]" (gEventLog)
+String EventLog20   "21: [%s]" (gEventLog)
+String EventLog21   "22: [%s]" (gEventLog)
+String EventLog22   "23: [%s]" (gEventLog)
+String EventLog23   "24: [%s]" (gEventLog)
+String EventLog24   "25: [%s]" (gEventLog)
+String EventLog25   "26: [%s]" (gEventLog)
+String EventLog26   "27: [%s]" (gEventLog)
+String EventLog27   "28: [%s]" (gEventLog)
+String EventLog28   "29: [%s]" (gEventLog)
+String EventLog29   "30: [%s]" (gEventLog)
+
+Group gEventInternal "Event Vars" (All)
+String EventLog     "Latest [%s]" (gEventInternal)
+
+
+
 
 // vim: syntax=Xtend
