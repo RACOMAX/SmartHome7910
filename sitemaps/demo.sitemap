@@ -72,13 +72,14 @@ sitemap demo label="Smart Home"
 				Switch item=Light_MB_BA_Switch icon="light"
                 Text item=ESP8266MOD_144A74_temperature icon="temperature" valuecolor=[ESP8266MOD_144A74_temperature=="NULL"="lightgray",ESP8266MOD_144A74_temperature>25="red",>0="green",<=0="blue"]
                 Text item=ESP8266MOD_144A74_humidity icon="humidity"
-                Text item=ESP8266MOD_144A74_dewpoint icon="rain"
+                //Text item=ESP8266MOD_144A74_dewpoint icon="rain"
                 Text item=ESP8266MOD_144A74_refreshtime icon="time"
                 Switch item=ESP8266MOD_144A74_buzzer icon="soundvolume"
 				
 			}
             Frame label="Rosalie's Bedroom" {
-                Text item=WL_BS_SP_Temp icon="temperature" valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>25="red",>0="green",<=0="blue"]
+                Slider item=Light_SF_MB_Lamp_Ros
+				Text item=WL_BS_SP_Temp icon="temperature" valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>25="red",>0="green",<=0="blue"]
 			}
 			Frame label="Common Areas" {
 				Switch item=Light_SF_STA_Lights icon="light"

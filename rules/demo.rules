@@ -1,3 +1,5 @@
+/*
+
 import java.util.Random
 
 var Timer timer = null
@@ -9,7 +11,7 @@ val Random random = new Random()
 /**
  * This is a demo rule which simulates a real dimmer by reacting to increase/decrease commands
  * and posting an updated state on the bus
- */
+ /
 rule "Dimmed Light"
 when
     Item DimmedLight received command
@@ -52,7 +54,7 @@ end
 
 /**
  * The following rules help initializing the demo items with some helpful states.
- */
+ /
 rule "Initialize light states"
 when
     System started
@@ -160,5 +162,5 @@ then
         case 2 : playStream("http://mp3-live.swr3.de/swr3_m.m3u")
     }
 end
-
+*/
 // vim: syntax=Xtend
