@@ -1,12 +1,13 @@
+/*
 rule "Sunset Actions"
 when
     Channel "astro:sun:7d61bd11:set#event" triggered START
 then
     postUpdate(EventLog, "Sunset Rule: TRIGERED -> ")
-    sendTelegram("bot2", "Sunset Rules Trigered}")
+    sendTelegram("bot2", "Sunset Rules Trigered")
     sendCommand(Light_OUT_CHR_Switch, ON)
     sendCommand(Light_MF_LR_Lamp, ON)
     sendTelegram("bot2", "Turning ON - Christmas Lights")
 end
-
+*/
 

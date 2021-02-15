@@ -8,12 +8,13 @@
 /* itemtype itemname "labeltext [stateformat]" <iconname> (group1, group2, ...) ["tag1", "tag2", ...] {bindingconfig} */
 Switch Light_MF_LR_Lamp "Living Room Lamp" {channel="zwave:device:54d243ff:node25:switch_binary"}
 Switch Light_MF_KT_Lights "Kitchen Lights" {channel="mqtt:topic:f51b6572:mqtt0000000000001"}
+Switch Light_MF_KTSINK_Lights "Kitchen Sink Lights" {channel="mqtt:topic:e180ef82:switch"}
 Switch Light_MF_PO_Lights "Porch Lights" {channel="zwave:device:54d243ff:node22:switch_binary"}
 Dimmer Light_SF_MB_Lamp_Y "MB Lamp - L" {channel="zigbee:device:91e3c8e6:b0ce1814035c9945:B0CE1814035C9945_1_dimmer"}
 Dimmer Light_SF_MB_Lamp_R "MB Lamp - R" {channel="zigbee:device:91e3c8e6:dd16abfff2c00625:DD16ABFFF2C00625_1_dimmer"}
-Dimmer Light_SF_MB_Lamp_Ros "Rosalie's Lamp" {channel="zigbee:device:91e3c8e6:b0ce18140320802d:B0CE18140320802D_1_dimmer"}               
+Dimmer Light_SF_MB_Lamp_Ros "Living Room Lamp" {channel="zigbee:device:91e3c8e6:b0ce18140320802d:B0CE18140320802D_1_dimmer"}               
 Switch Light_SF_STA_Lights "Stairs Lights" {channel="mqtt:topic:5d3b7e98:mqtt0000000000002"}
-Switch Light_MF_LR_Lights "Living Room Lights" {channel="mqtt:topic:03e03961:00004"}
+//Switch Light_MF_LR_Lights "Living Room Lights" {channel="mqtt:topic:03e03961:00004"}
 
 /////////////////////////
 /* Indoor Temperatures */
@@ -73,6 +74,16 @@ String Light_MF_LR_module "Module" {channel="mqtt:topic:03e03961:module"}
 String Light_MF_LR_version "FW Version" {channel="mqtt:topic:03e03961:version"}
 String Light_MF_LR_ipaddress "IP Address" {channel="mqtt:topic:03e03961:ipaddress"}
 String Light_MF_LR_wifirssi "WIFI RSSI" {channel="mqtt:topic:03e03961:wifi-rssi"}
+//
+// LIVING ROOM TV LIGHTS 
+// SONOFF MINI - Tasmota Lite
+Switch Light_MF_LRTV_Switch "Living Room TV" {channel="mqtt:topic:93b6b7ff:switch"}
+String Light_MF_LRTV_hostname "Hostname" {channel="mqtt:topic:93b6b7ff:hostname"}
+String Light_MF_LRTV_availability "Availability" {channel="mqtt:topic:93b6b7ff:availability"}
+String Light_MF_LRTV_module "Module" {channel="mqtt:topic:93b6b7ff:module"}
+String Light_MF_LRTV_version "FW Version" {channel="mqtt:topic:93b6b7ff:version"}
+String Light_MF_LRTV_ipaddress "IP Address" {channel="mqtt:topic:93b6b7ff:ipaddress"}
+String Light_MF_LRTV_wifirssi "WIFI RSSI" {channel="mqtt:topic:93b6b7ff:wifi-rssi"}
 //
 // MAIN FLOOR ENTRANCE LIGHTS 
 // SONOFF MINI - Tasmota Lite

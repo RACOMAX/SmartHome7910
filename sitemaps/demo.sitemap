@@ -47,12 +47,15 @@ sitemap demo label="Smart Home"
 		Text label="Main Floor" icon="groundfloor" {    
 			Frame label="Kitchen and Dinning" {
                 Switch item=Light_MF_KT_Lights icon="light"
+				Switch item=Light_MF_KTSINK_Lights icon="light"
 				Switch item=Light_MF_DIN_Switch icon="light"
  	            Text item=MS_MF_Dinning_Temp icon="temperature" valuecolor=[MS_MF_Dinning_Temp=="NULL"="lightgray",MS_MF_Dinning_Temp>25="red",>0="green",<=0="blue"]
 			}
 			Frame label="Living Room" {
-				Switch item=Light_MF_LR_Lights icon="light"
-				Switch item=Light_MF_LR_Lamp icon="light"
+				Switch item=Light_MF_LR_Switch icon="light"
+				Switch item=Light_MF_LRTV_Switch icon="light"
+				Slider item=Light_SF_MB_Lamp_Ros
+				//Switch item=Light_MF_LR_Lamp icon="light"
 			}
             Frame label="Other Lights" {
 			    Switch item=Light_MF_PO_Lights icon="light"
@@ -78,7 +81,7 @@ sitemap demo label="Smart Home"
 				
 			}
             Frame label="Rosalie's Bedroom" {
-                Slider item=Light_SF_MB_Lamp_Ros
+                //Slider item=Light_SF_MB_Lamp_Ros
 				Text item=WL_BS_SP_Temp icon="temperature" valuecolor=[WL_BS_SP_Temp=="NULL"="lightgray",WL_BS_SP_Temp>25="red",>0="green",<=0="blue"]
 			}
 			Frame label="Common Areas" {

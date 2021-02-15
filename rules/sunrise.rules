@@ -1,11 +1,13 @@
+/*
 rule "Sunrise Actions"
 when
     Channel "astro:sun:7d61bd11:rise#event" triggered START
 then
     postUpdate(EventLog, "Sunrise Rule: TRIGERED -> ")
-    sendTelegram("bot2", "Sunrise Rules Trigered}")
+    sendTelegram("bot2", "Sunrise Rules Trigered")
     sendCommand(Light_OUT_CHR_Switch, OFF)
     sendCommand(Light_MF_LR_Lamp, OFF)
     sendTelegram("bot2", "Turning OFF - Christmas Lights")
     
 end
+*/
